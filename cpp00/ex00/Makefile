@@ -1,6 +1,6 @@
 NAME = megaphone
 
-C_FLAGS = -Wall -Werror -std=c++98 -Werror
+C_FLAGS = -Wall -Wextra -std=c++98 -Werror
 
 SRC = megaphone
 
