@@ -2,14 +2,15 @@ NAME = megaphone
 
 C_FLAGS = -Wall -Werror -std=c++98 -Werror
 
-SRC = megaphone.cpp
+SRC = megaphone
 
+SRC_CPP = $(addsuffix .cpp, $(SRC))
 OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME):
-	c++ $(C_FLAGS) -o $(NAME)
+$(NAME): $(SRC_CPP)
+	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)

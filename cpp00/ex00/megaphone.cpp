@@ -19,7 +19,7 @@ static void print_ft_upper(char **av)
 
 int main(int ac, char **av)
 {
-	if (argc == 1)
+	if (ac == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 		print_ft_upper((char **)av);
