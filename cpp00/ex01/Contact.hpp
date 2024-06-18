@@ -5,7 +5,8 @@
 # include <iostream>
 # include <iomanip>
 
-class Contact {
+class Contact
+{
 	private:
         int			_index;
 		std::string	_firstName;

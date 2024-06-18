@@ -35,7 +35,7 @@ int main(void)
     std::cout << "You have the following options at your disposal: \n" << std::endl;
     std::cout << "ADD - add a new contact to your phone book." << std::endl;
 	std::cout << "SEARCH - search for a specific contact inside of your phone book." << std::endl;
-	std::cout << "EXIT - exit the program.\n" << std::endl;
+	std::cout << "EXIT - exit the program.\n" << std::endl; 
 
     while (1)
     {

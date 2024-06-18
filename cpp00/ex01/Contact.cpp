@@ -7,7 +7,7 @@ Contact::Contact()
 
 Contact::~Contact()
 {
-	std::cout << "There is no contact!" << std::endl;
+	std::cout << "There is no contact!" << std::endl; 
 }
 
 void	Contact::set_index(int index)
