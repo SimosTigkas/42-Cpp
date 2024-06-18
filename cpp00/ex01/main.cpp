@@ -32,12 +32,10 @@ int main(void)
     std::cout << "\n\n" << std::endl;
     std::cout << "MY AWESOME PHONEBOOK\n" << std::endl;
     std::cout << "\n" << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     std::cout << "You have the following options at your disposal: \n" << std::endl;
     std::cout << "ADD - add a new contact to your phone book." << std::endl;
 	std::cout << "SEARCH - search for a specific contact inside of your phone book." << std::endl;
 	std::cout << "EXIT - exit the program.\n" << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl;
 
     while (1)
     {

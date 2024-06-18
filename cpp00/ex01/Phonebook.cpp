@@ -12,7 +12,7 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-    // std::cout << "There is no contact in this Phonebook!" << std::endl;
+
 }
 
 void PhoneBook::add_contact(void)
