@@ -3,7 +3,7 @@ NAME = phonebook
 C_FLAGS = -Wall -Werror -std=c++98 -Werror
 
 SRC = \
-	Phonebook \
+	PhoneBook \
 	Contact \
 
 SRC_HPP = $(addsuffix .hpp, $(SRC))
@@ -12,8 +12,8 @@ OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): main.cpp $(SRC_HPP) $(SRC_CPP)
-	c++ $(C_FLAGS) $(SRC_CPP) -I$(INC) -o $(NAME)
+$(NAME): main.cpp $(SRC_CPP) $(SRC_HPP)
+	c++ $(C_FLAGS) $(SRC_CPP) main.cpp -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
