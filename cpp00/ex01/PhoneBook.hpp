@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include "Contact.hpp"
+# include <cstdlib>
+# include <limits>
 
 class PhoneBook
 {

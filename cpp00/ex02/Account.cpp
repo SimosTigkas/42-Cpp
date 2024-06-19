@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "Account.hpp"
-#include "Account.hpp"
 #include <sys/time.h>
 #include <iostream>
+#include <ctime>
 
 int Account::_nbAccounts=0;
 int Account::_totalAmount=0;
@@ -115,7 +115,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	int temp_amount;	
 
 	
-	if (remaining_amount > 0)
+	if (remaining_amount < 0)
 	{
 		_displayTimestamp();
 		std::cout << "index:" << this->_accountIndex << ";p_amount:"
@@ -147,8 +147,8 @@ void Account::displayStatus(void) const
 
 void Account::_displayTimestamp(void)
 {
-	std::time_t now = std::time(nullptr);
-	std::tm *const local_now = std::localtime(&now);
+	time_t curr_time = time(NULL);
+    tm *const local_now = localtime(&curr_time);
 	std::cout << "[" << local_now->tm_year + 1900
 		<< (local_now->tm_mon < 10 ? "0" : "")
 		<< local_now->tm_mon
