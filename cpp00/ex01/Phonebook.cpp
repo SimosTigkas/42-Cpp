@@ -29,20 +29,19 @@ void PhoneBook::add_contact(void)
 void	PhoneBook::search_contact(void) const
 {
 	int		index = -1;
-	bool	valid = false;
-	std::cin.clear();
-	
-    while (valid)
+	int 	valid=0;
+
+	std::cin.clear();	
+    while (!valid)
 	{
 		std::cout << "Please enter the contact index: " << std::flush;
 		std::cin >> index;
 		if (std::cin.eof())
 			exit(0);
 		if (std::cin.good() && (index >= 0 && index <= 7))
-        {
-            valid = true;
-        }
-         else {
+            valid = 1;
+        else
+		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Available contacts are only between 0 and 7, please try again..." << std::endl;

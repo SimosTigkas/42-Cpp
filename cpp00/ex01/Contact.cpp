@@ -7,7 +7,7 @@ Contact::Contact()
 
 Contact::~Contact()
 {
-	std::cout << "There is no contact!" << std::endl; 
+
 }
 
 void	Contact::set_index(int index)
@@ -47,8 +47,9 @@ std::string	Contact::get_darkestsecret(void) const
 
 static std::string  read_value(std::string output)
 {
-    int success = 0;
-    std::string input="";
+    int			success = 0;
+    std::string	input="";
+
     while (!success)
     {
         std::cout << output << std::flush;
@@ -85,10 +86,10 @@ void Contact::init(int index)
 	std::cout << "Please follow these instructions:" << std::endl;
 	this->_firstName = read_value("Type in your first name: ");
 	this->_lastName = read_value("Type in your last name: ");
-	this->_nickname = read_value("Type in your nibckname: ");
+	this->_nickname = read_value("Type in your nickname: ");
 	this->_phoneNumber = read_value("Type in your phone number: ");
 	this->_darkestSecret = read_value("Reveal your darkest secret: ");
-	std::cout << "Well done!! You have added successfully a contact!\n" << std::endl;
+	std::cout << "Well done!! You have added successfully a contact!" << std::endl;
 }
 
 static std::string	check_max(std::string output)

@@ -7,8 +7,8 @@ std::string check_options()
 
     while (!success)
     {
-        std::cout << "Choose one of the options that you have at your disposal" << std::endl;
-        std::cout << "The otpion you chose is: " << std::flush;
+        std::cout << "Choose one of the options!!" << std::endl;
+        std::cout << "WHAT DID YOU CHOOSE? --> " << std::flush;
         std::getline(std::cin, input);
         if (std::cin.eof())
             exit(0);
@@ -29,13 +29,17 @@ int main(void)
     int         len;
     PhoneBook   book_of_contacts;
 
-    std::cout << "\n\n" << std::endl;
-    std::cout << "MY AWESOME PHONEBOOK\n" << std::endl;
-    std::cout << "\n" << std::endl;
-    std::cout << "You have the following options at your disposal: \n" << std::endl;
-    std::cout << "ADD - add a new contact to your phone book." << std::endl;
-	std::cout << "SEARCH - search for a specific contact inside of your phone book." << std::endl;
-	std::cout << "EXIT - exit the program.\n" << std::endl; 
+    std::cout << std::endl;
+	std::cout << "~~~~~~~~~~~~~....WELCOME TO MY....~~~~~~~~~~~~" << std::endl;
+    std::cout << "~~~~~~~~~~~~~MY AWESOME PHONEBOOK~~~~~~~~~~~~~\n" << std::endl;
+	std::cout << "			|						  " << std::endl;
+	std::cout << "			|						  " << std::endl;
+	std::cout << "			V						  " << std::endl;
+    std::cout << std::endl;
+    std::cout << "You have the following options at your disposal:" << std::endl;
+    std::cout << "ADD: add a new contact to your phone book." << std::endl;
+	std::cout << "SEARCH: search for a specific contact inside of your phone book." << std::endl;
+	std::cout << "EXIT: exit the program.\n" << std::endl; 
 
     while (1)
     {
@@ -44,7 +48,7 @@ int main(void)
         if (len == 3 && !input.compare("ADD"))
         {
             book_of_contacts.add_contact();
-            std::cout << "\n\n" << std::endl;
+            std::cout << std::endl;
             continue;
         }
         else if (len == 6 && !input.compare("SEARCH"))
