@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:18:36 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/19 12:18:37 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/19 12:52:09 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ static std::string  read_value(std::string output)
 			exit(0);
 		}
         if (std::cin.good() && !input.empty())
-        {
             success = 1;
-        }
         else if (input.empty())
         {
             std::cin.clear();

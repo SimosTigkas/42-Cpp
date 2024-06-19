@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:18:58 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/19 12:18:59 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/19 12:48:41 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <iostream>
 # include "Contact.hpp"
-
 
 class PhoneBook
 {
