@@ -4,7 +4,7 @@ C_FLAGS = -Wall -Werror -std=c++98 -Werror
 
 SRC = \
 	PhoneBook \
-	Contact \
+	Contact
 
 SRC_HPP = $(addsuffix .hpp, $(SRC))
 SRC_CPP = $(addsuffix .cpp, $(SRC))
