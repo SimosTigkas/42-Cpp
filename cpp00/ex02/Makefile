@@ -10,8 +10,8 @@ OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): test.cpp $(SRC_CPP) $(SRC_HPP)
-	c++ $(C_FLAGS) $(SRC_CPP) test.cpp -o $(NAME)
+$(NAME): tests.cpp $(SRC_CPP) $(SRC_HPP)
+	c++ $(C_FLAGS) $(SRC_CPP) tests.cpp -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -20,6 +20,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
 
 .PHONY: all clean fclean re
