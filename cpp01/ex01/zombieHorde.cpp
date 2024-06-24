@@ -6,8 +6,31 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:19:23 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 12:19:40 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/24 12:45:44 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+
+Zombie* zombieHorde(int N, std::string name)
+{
+    int i=0;
+
+    if (N < 0)
+    {
+        std::cout << "You can´t create negative number of zombies!!" << std::endl;
+        return (NULL);
+    }
+    if (name.empty())
+    {
+        std::cout << "You did not give a name to the Zombie..please do" << std::endl;
+        return (NULL);
+    }
+    Zombie *zombieGroup = new Zombie[N];
+    while (i < N)
+    {
+        zombieGroup[i].setName(name);
+        i++;
+    }
+    return (zombieGroup);
+}
