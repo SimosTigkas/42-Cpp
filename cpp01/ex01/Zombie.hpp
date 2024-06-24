@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:19:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 13:18:03 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/24 15:22:34 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include <cstdlib>
 # include <limits>
+# include <stdio.h>
 
 class Zombie
 {
