@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:02:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 22:13:13 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/24 22:16:27 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 HumanB::HumanB(std::string name)
 {
     this->_name = name;
-    Weapon::setType(nullptr);
-    this->_weapon = Weapon::getType();
 }
 
 HumanB::~HumanB()
