@@ -14,5 +14,11 @@
 
 int main(void)
 {
-    
+    Harl Odin;
+
+    std::cout << "The available comment levels are DEBUG, INFO, WARNING, ERROR!!\n" << std::endl;
+    Odin.complain("DEBUG");
+    Odin.complain("INFO");
+    Odin.complain("WARNING");
+    Odin.complain("ERROR");
 }
