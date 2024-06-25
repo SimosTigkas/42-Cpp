@@ -18,7 +18,7 @@ $(NAME): main.cpp $(SRC_CPP) $(SRC_HPP)
 	c++ $(C_FLAGS) $(SRC_CPP) main.cpp -o $(NAME)
 
 clean:
-	rm -f $(SRCSO)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
