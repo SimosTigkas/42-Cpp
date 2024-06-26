@@ -5,19 +5,18 @@ C_FLAGS = -Wall -Wextra -std=c++98 -Werror
 SRC = main
 
 SRC_CPP = $(addsuffix .cpp, $(SRC))
-# SRC_HPP = $(addsuffix .h, $(SRC))
 OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): main.cpp $(SRC_CPP)
-	c++ $(C_FLAGS) $(SRC_CPP) main.cpp -o $(NAME)
+$(NAME): $(SRC_CPP) $(OBJ)
+	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) 
 
 re: fclean all
 

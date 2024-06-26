@@ -14,7 +14,7 @@ OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): main.cpp $(SRC_CPP) $(SRC_HPP)
+$(NAME): main.cpp $(SRC_CPP) $(SRC_HPP) $(OBJ)
 	c++ $(C_FLAGS) $(SRC_CPP) main.cpp -o $(NAME)
 
 clean:

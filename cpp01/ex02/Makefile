@@ -9,7 +9,7 @@ OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): main.cpp
+$(NAME): main.cpp $(OBJ)
 		c++ $(C_FLAGS) main.cpp -o $(NAME)
 
 clean:
