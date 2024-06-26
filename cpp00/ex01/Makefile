@@ -1,6 +1,6 @@
 NAME = phonebook
 
-C_FLAGS = -Wall -Werror -std=c++98 -Werror
+C_FLAGS = -Wall -Werror -Werror
 
 SRC = \
 	PhoneBook \
