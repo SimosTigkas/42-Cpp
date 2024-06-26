@@ -1,6 +1,6 @@
 NAME = harlFilter
 
-C_FLAGS = -Wall -Wextra -std=c++98 -Werror
+C_FLAGS = -Wall -Wextra -Werror
 
 SRC = Harl main
 INC = Harl
