@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:13:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/27 14:15:20 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/27 16:05:06 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 class Fixed
 {
     private:
-        int                 value;
+        int                 fixedvalue;
         static const int    bits=8;
     public:
         Fixed(const int num);
         Fixed(const float nmro);
-        Fixed();
+        Fixed(void);
         ~Fixed(void);
         Fixed(const Fixed &new_obj);
         Fixed &operator=(const Fixed &new_obj);
@@ -35,6 +35,6 @@ class Fixed
         void    setRawBits(int const raw);
 };
 
-std::ostream &operator << (std::ostream &stream, const Fixed &nbr);
+std::ostream &operator << (std::ostream &stream, const Fixed &num);
 
 #endif
