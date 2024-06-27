@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:18:54 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 12:18:06 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/27 11:47:05 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ PhoneBook::PhoneBook()
 	}
 }
 
-PhoneBook::~PhoneBook()
-{
- 
-}
+PhoneBook::~PhoneBook(){}
 
 void PhoneBook::add_contact(void)
 {

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:18:36 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 12:17:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/27 11:48:21 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ Contact::Contact()
     this->_index = -1;
 }
 
-Contact::~Contact()
-{
-
-}
+Contact::~Contact(){}
 
 void	Contact::set_index(int index)
 {

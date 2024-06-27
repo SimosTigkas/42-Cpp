@@ -1,6 +1,6 @@
 NAME = account
 
-C_FLAGS = -Wall -Werror -Werror
+C_FLAGS = -Wall -Wextra -Werror
 
 SRC = Account
 

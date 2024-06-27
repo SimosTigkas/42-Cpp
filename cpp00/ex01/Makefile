@@ -1,6 +1,6 @@
 NAME = phonebook
 
-C_FLAGS = -Wall -Werror -Werror
+C_FLAGS = -Wall -Wextra -Werror
 
 SRC = \
 	PhoneBook \
