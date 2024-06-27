@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:13:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/27 16:27:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/27 16:29:29 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ std::ostream& operator<<(std::ostream &out, const Fixed &new_obj)
 
 float Fixed::toFloat(void) const
 {
-    return (float)this->fixedvalue / (float)(1 << Fixed::bits);
+    return ((float)this->fixedvalue / (float)(1 << Fixed::bits));
 }
 
 int Fixed::toInt(void) const
