@@ -6,8 +6,14 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:01:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/28 14:12:23 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:51:36 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+int main(void)
+{
+    
+    return (0);
+}
