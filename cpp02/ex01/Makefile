@@ -15,7 +15,7 @@ OBJ = $(addsuffix .o, $(SRC))
 all: $(NAME)
 
 $(NAME): $(SRC_CPP) $(OBJ)
-	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME) -I $(INC)
+	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME) -I $(SRC_HPP)
 
 clean:
 	rm -f $(OBJ)
