@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:18:42 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/19 12:18:43 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:13:08 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ class Contact
 
         void		set_index(int index);
 		int			get_index(void) const;
-		std::string	get_firstname(void) const;
-		std::string	get_lastname(void) const;
-		std::string	get_nickname(void) const;
-		std::string	get_phonenumber(void) const;
-		std::string	get_darkestsecret(void) const;
 		void		init(int index);
 		void		display(void) const;
 		void		view(void) const;

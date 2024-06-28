@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:18:36 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/27 11:48:21 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:13:08 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,6 @@ void	Contact::set_index(int index)
 int	Contact::get_index(void) const
 {
 	return this->_index;
-}
-
-std::string	Contact::get_firstname(void) const
-{
-	return this->_firstName;
-}
-
-std::string	Contact::get_lastname(void) const
-{
-	return this->_lastName;
-}
-
-std::string	Contact::get_nickname(void) const
-{
-	return this->_nickname;
-}
-
-std::string	Contact::get_phonenumber(void) const
-{
-	return this->_phoneNumber;
-}
-
-std::string	Contact::get_darkestsecret(void) const
-{
-	return this->_darkestSecret;
 }
 
 static std::string  read_value(std::string output)
