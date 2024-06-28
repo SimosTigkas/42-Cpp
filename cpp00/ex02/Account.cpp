@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:14:45 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 12:18:20 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:20:34 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int Account::_totalNbWithdrawals=0;
 
 static int get_index()
 {
-	static int index;
+	static int index = -1;
 	index++;
 	return (index);	
 }
