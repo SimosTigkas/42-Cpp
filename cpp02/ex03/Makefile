@@ -5,7 +5,7 @@ C_FLAGS = -Wall -Wextra -Werror
 SRC = \
 	Fixed \
 	main \
-	bcp \
+	bsp \
 	Point
 
 INC = \
@@ -13,13 +13,16 @@ INC = \
 	Point
 
 SRC_CPP = $(addsuffix .cpp, $(SRC))
-SRC_HPP = $(addsuffix .h, $(INC))
+SRC_HPP = $(addsuffix .hpp, $(INC))
 OBJ = $(addsuffix .o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): $(SRC_CPP) $(OBJ)
-	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME) -I $(SRC_HPP)
+$(NAME): $(OBJ)
+	c++ $(C_FLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp $(SRC_HPP)
+	c++ $(C_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
