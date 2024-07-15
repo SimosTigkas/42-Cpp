@@ -13,7 +13,7 @@ $(NAME): $(SRC_CPP) $(OBJ)
 	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) text.txt.replace
 
 fclean: clean
 	rm -f $(NAME) 

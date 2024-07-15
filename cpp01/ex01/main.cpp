@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:13:26 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 15:31:59 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/15 12:40:42 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,23 @@ int main(void)
         else
             break;
     }
-    std::cout << "How many zombies do you want to create?" << std::endl;
-    std::cout << "Insert a number: ";
-    if (std::cin >> N)
-       std::cout << "You have " << N << " zombies.\n" << std::endl;
-    else
-	{
-	    std::cout << "Invalid input! Please enter an integer!\n" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	}
+    while (1)
+    {
+        std::cout << "How many zombies do you want to create?" << std::endl;
+        std::cout << "Insert a number: ";
+        std::cin >> N;
+        if (std::cin.good())
+        {
+            std::cout << "You have " << N << " zombies.\n" << std::endl;
+            break;
+        }
+        else
+	    {
+	        std::cout << "Invalid input! Please enter an integer!\n" << std::endl;
+		    std::cin.clear();
+		    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	    }
+    }
     zombie_group = zombieHorde(N, zombie_name);
     i = 0;
     while (i < N)

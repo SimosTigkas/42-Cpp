@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:19:23 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/24 15:23:49 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/15 13:23:51 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Zombie* zombieHorde(int N, std::string name)
 
     if (N < 1)
     {
-        std::cout << "You havet to create more than one zombies!!" << std::endl;
+        std::cout << "You have to create at least one zombie!!" << std::endl;
         return (NULL);
     }
     if (name.empty())
