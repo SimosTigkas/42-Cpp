@@ -6,34 +6,24 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:02:36 by stigkas           #+#    #+#             */
-/*   Updated: 2024/06/28 15:58:47 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/15 15:43:13 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-Point::Point(void) {}
+Point::Point(void): x(0), y(0) {}
 
 Point::~Point(void) {}
 
-Point::Point(const Point &value_copy)
-{
+Point::Point(const Point &value_copy): x(get_x()), y(get_y()) {}
 
-}
-
-Point::Point(const Fixed var1, const Fixed var2)
-{
-
-}
-
-Point::Point(const Point &value_copy)
-{
-
-}
+Point::Point(const Fixed var1, const Fixed var2): x(var1), y(var2) {}
 
 Point& Point::operator=(const Point &new_obj)
 {
-    
+    if (this == &new_obj)
+        return (*this);
 }
 
 Fixed Point::get_x(void) const
