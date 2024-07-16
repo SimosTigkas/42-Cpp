@@ -8,14 +8,17 @@ SRC = \
 
 INC = Fixed
 
-SRC_CPP = $(addsuffix .cpp, $(SRC))
-SRC_HPP = $(addsuffix .h, $(INC))
-OBJ = $(addsuffix .o, $(SRC))
+SRC_CPP = $(patsubst %, %.cpp, $(SRC))
+SRC_HPP = $(patsubst %, %.h, $(INC))
+OBJ = $(patsubst %, %.o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): $(SRC_CPP) $(OBJ)
-	c++ $(C_FLAGS) $(SRC_CPP) -o $(NAME) -I $(SRC_HPP)
+$(NAME): $(OBJ)
+	c++ $(C_FLAGS) $(OBJ) -o $(NAME) -I $(INC)
+
+%.o: %.cpp
+	c++ $(C_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
