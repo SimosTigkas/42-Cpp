@@ -6,8 +6,8 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:12:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/16 14:15:59 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/18 13:02:00 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include 
+#include "ScavTrap.hpp"

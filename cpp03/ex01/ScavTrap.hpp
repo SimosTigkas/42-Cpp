@@ -6,7 +6,18 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/16 14:19:40 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/18 13:03:26 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
+
+# include "ClapTrap.hpp"
+
+
+
+
+
+
+#endif
