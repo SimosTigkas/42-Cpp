@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:13:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/18 12:46:35 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/18 13:18:11 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(std::string name): name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-    std::cout << "\nClapTrap " << this->name << " has been called!" << std::endl;
+    std::cout << "\nClapTrap " << name << " has been called!" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
