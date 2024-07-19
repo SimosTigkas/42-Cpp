@@ -6,14 +6,14 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 15:14:42 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/19 16:10:30 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FLAGTRAP_HPP
 # define FLAGTRAP_HPP
 
-# include "ScavTrap.hpp"
+# include "ClapTrap.hpp"
 
 class FlagTrap: public ClapTrap
 {
