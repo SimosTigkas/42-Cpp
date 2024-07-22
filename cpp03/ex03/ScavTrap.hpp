@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:49 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 16:08:30 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 14:52:20 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
-    private:
-        ScavTrap(void);
     public:
         ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &a_copy);

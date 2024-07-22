@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:44 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 13:51:26 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 14:52:29 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap
+class FragTrap: virtual public ClapTrap
 {
-    private:
-        FragTrap(void);
     public:
         FragTrap(std::string name);
 		FragTrap(const FragTrap &a_copy);
@@ -26,6 +24,7 @@ class FragTrap: public ClapTrap
 		~FragTrap(void);
 
         void attack(const std::string& target);
-        void highFivesGuys(void);};
+        void highFivesGuys(void);
+};
 
 #endif

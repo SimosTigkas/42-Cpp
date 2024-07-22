@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 14:03:00 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 14:43:15 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-class DiamondTrap: public ScavTrap, public FragTrap, public ClapTrap
+class DiamondTrap: public ScavTrap, public FragTrap
 {
     public:
         DiamondTrap(std::string name);
