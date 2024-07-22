@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 16:07:00 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 15:18:44 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class ClapTrap
 {
     public:
+        ClapTrap(void);
         ClapTrap(std::string name);
         ~ClapTrap(void);
         ClapTrap(const ClapTrap &a_copy);

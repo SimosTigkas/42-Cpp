@@ -2,13 +2,11 @@ NAME=DiamondTrap
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = ClapTrap ScavTrap FragTrap DiamondTrap main
+SRC = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp
 
-INC = ClapTrap ScavTrap FlagTrap DiamondTrap
+INC = ClapTrap.hpp ScavTrap.hpp FlagTrap.hpp DiamondTrap.hpp
 
-SRC_CPP = $(addsuffix .cpp, $(SRC))
-SRC_HPP = $(addsuffix .hpp, $(INC))
-OBJ = $(addsuffix .o, $(SRC))
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 

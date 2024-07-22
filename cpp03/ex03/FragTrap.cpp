@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:37 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 13:50:28 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 15:43:36 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap(void)
+{
+    std::cout << "FragTrap default constrcutor called." << std::endl;
+
+}
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
@@ -39,7 +45,7 @@ FragTrap& FragTrap::operator=(const FragTrap &og)
         this->energyPoints = og.energyPoints;
         this->hitPoints = og.hitPoints;
     }
-    std::cout << "Copy assignment constructor has been called!" << std::endl;
+    std::cout << "FragTrap Copy assignment constructor has been called!" << std::endl;
     return (*this);
 }
 

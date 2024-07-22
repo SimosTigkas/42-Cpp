@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:12:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 16:03:49 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 16:28:04 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int main(void)
 {
-    FlagTrap Venom("Venom");
-    FlagTrap Carnage("Carnage");
+    FragTrap Venom("Venom");
+    FragTrap Carnage("Carnage");
 
     Venom.setAttackDamage(3);
     Venom.attack("Carnage");

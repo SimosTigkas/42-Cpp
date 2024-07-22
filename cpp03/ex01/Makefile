@@ -2,13 +2,11 @@ NAME=ScavTrap
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = ClapTrap ScavTrap main
+SRC = ClapTrap.cpp ScavTrap.cpp main.cpp
 
-INC = ClapTrap ScavTrap
+INC = ClapTrap.hpp ScavTrap.hpp
 
-SRC_CPP = $(addsuffix .cpp, $(SRC))
-SRC_HPP = $(addsuffix .hpp, $(INC))
-OBJ = $(addsuffix .o, $(SRC))
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:49 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 14:52:20 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 15:15:21 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class ScavTrap: virtual public ClapTrap
 {
     public:
+        ScavTrap(void);
         ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &a_copy);
 		ScavTrap& operator=(const ScavTrap &og);
