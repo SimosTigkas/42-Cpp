@@ -6,18 +6,31 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 16:09:41 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 14:03:00 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
-#include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class FlagTrap
+class DiamondTrap: public ScavTrap, public FragTrap, public ClapTrap
 {
-    
+    public:
+        DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap &a_copy);
+		DiamondTrap& operator=(const DiamondTrap &og);
+		~DiamondTrap(void);
+    using ScavTrap::attack;
+        void whoAmI(void);
+    protected:
+        std::string name;
+        unsigned int         hitPoints;
+        unsigned int         energyPoints;
+        unsigned int         attackDamage;
+    DiamondTrap(void);        
 };
 
 #endif

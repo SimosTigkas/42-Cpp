@@ -6,24 +6,24 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:44 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 16:10:53 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/22 13:51:26 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGTRAP_HPP
-# define FLAGTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-class FlagTrap: public ClapTrap
+class FragTrap: public ClapTrap
 {
     private:
-        FlagTrap(void);
+        FragTrap(void);
     public:
-        FlagTrap(std::string name);
-		FlagTrap(const FlagTrap &a_copy);
-		FlagTrap& operator=(const FlagTrap &og);
-		~FlagTrap(void);
+        FragTrap(std::string name);
+		FragTrap(const FragTrap &a_copy);
+		FragTrap& operator=(const FragTrap &og);
+		~FragTrap(void);
 
         void attack(const std::string& target);
         void highFivesGuys(void);};
