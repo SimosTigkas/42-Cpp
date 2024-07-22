@@ -2,7 +2,7 @@ NAME=FlagTrap
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = ClapTrap ScavTrap FlagTrap main
+SRC = ClapTrap ScavTrap FragTrap main
 
 INC = ClapTrap ScavTrap FlagTrap
 
