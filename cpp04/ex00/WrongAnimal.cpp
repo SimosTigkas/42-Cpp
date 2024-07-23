@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:06:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 13:20:53 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 13:45:24 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ WrongAnimal::~WrongAnimal(void)
 
 void WrongAnimal::makeSound(void) const
 {
-    std::cout << "\nThis WrongAnimal does not know which sound to make...\n" << std::endl;
+    std::cout << "\nThis " << this->type << " does not know which sound to make...\n" << std::endl;
 }
 
 std::string WrongAnimal::getType(void) const

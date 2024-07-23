@@ -6,42 +6,40 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:03:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 13:23:19 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 13:51:40 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
-// #include "WrongCat.hpp"
-
-int main()
+int main(void)
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+	const Animal	*meta = new Animal();
+	std::cout << "Animal type: " << meta->getType() << std::endl;
+	meta->makeSound();
+	delete meta;
+	std::cout << std::endl;
 
-    delete meta;
-    delete j;
-    delete i;
+	const Animal	*kissa = new Cat();
+	std::cout << "Cat type: " << kissa->getType() << std::endl;
+	kissa->makeSound();
+	delete kissa;
 
+	const Animal	*koira = new Dog();
+	std::cout << "Dog type: " << koira->getType() << std::endl;
+	koira->makeSound();
+	delete koira;
 
-    // const WrongAnimal* meta = new WrongAnimal();
-    // const Animal* j = new Dog();
-    // const WrongAnimal* i = new WrongCat();
-    // std::cout << j->getType() << " " << std::endl;
-    // std::cout << i->getType() << " " << std::endl;
-    // i->makeSound(); //will output the cat sound!
-    // j->makeSound();
-    // meta->makeSound();
+	const WrongAnimal	*wrong_meta = new WrongAnimal();
+	std::cout << "Animal type: " << wrong_meta->getType() << std::endl;
+	wrong_meta->makeSound();
+	delete wrong_meta;
 
-    // delete meta;
-    // delete j;
-    // delete i;
+	const WrongAnimal	*wrong_kissa = new WrongCat();
+	std::cout << "WrongCat type: " << wrong_kissa->getType() << std::endl;
+	wrong_kissa->makeSound();
+	delete wrong_kissa;
     return 0;
 }
