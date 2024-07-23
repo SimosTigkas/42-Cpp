@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:34:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 09:32:13 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:56:10 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 Animal::Animal(void)
 {
-    std::cout << "Animal Default Constructor has been called." << std::endl;
+    this->type = "Random_animal";
+    std::cout << "\nAnimal " << this->type << " Default Constructor has been called." << std::endl;
 }
 
 Animal::Animal(std::string name): type(name)
-{
+{   
+    this->type = "Random_animal";
     std::cout << "Animal " << this->type << " has been created!!" << std::endl;
 }
 
 Animal::Animal(const Animal &a_copy)
 {
     this->type = a_copy.type;
-    std::cout << "Animal Copy Constructor has been called." << std::endl;
-
+    std::cout << "Animal " << this->type << "Copy Constructor has been called." << std::endl;
 }
 
 Animal &Animal::operator=(const Animal &og)
@@ -45,9 +46,9 @@ Animal::~Animal(void)
     std::cout << "Animal " << this->type << " has been destroyed." << std::endl;
 }
 
-void Animal::makeSound(void)
+void Animal::makeSound(void) const
 {
-    std::cout << "Not any sound available yet.." << std::endl;
+    std::cout << "This animal does not know which sound to make...\n" << std::endl;
 }
 
 std::string Animal::getType(void) const

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:34:56 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 09:04:54 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:52:33 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Animal
         virtual ~Animal(void);
         Animal  &operator=(const Animal &og);
         
-        virtual void    makeSound(void);
+        virtual void    makeSound(void) const;
         std::string     getType(void) const;
 
 };
