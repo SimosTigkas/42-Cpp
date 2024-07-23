@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:13:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 13:50:32 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 07:16:31 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     }
     if (this->hitPoints == 0)
     {
-        std::cout << "ClapTrap " << this->name << " is already dead..the battle is over.." << std::endl;
+        std::cout << "ClapTrap " << this->name << " is already dead..the battle is over..\n" << std::endl;
         exit(EXIT_FAILURE);
     }
     this->hitPoints += amount;

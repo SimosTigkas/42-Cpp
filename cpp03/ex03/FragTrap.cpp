@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:37 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 15:43:36 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 07:24:48 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 FragTrap::FragTrap(void)
 {
-    std::cout << "FragTrap default constrcutor called." << std::endl;
+    std::cout << "FragTrap " << this->name << " default constructor has been called." << std::endl;
 
 }
 

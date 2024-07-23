@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:13:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 15:20:29 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/23 07:21:50 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-    std::cout << "ClapTrap default constrcutor called." << std::endl;
+    std::cout << "ClapTrap default constructor called." << std::endl;
 
 }
 
@@ -87,7 +87,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     if (this->hitPoints == 0)
     {
         std::cout << "ClapTrap " << this->name << " is already dead..the battle is over.." << std::endl;
-        exit(EXIT_FAILURE);
+        return ;
     }
     this->hitPoints += amount;
     this->energyPoints--;
