@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 07:59:42 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 12:17:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/24 13:40:17 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat: public Animal
 {
+    protected:
+        Brain *brain;
     public:
         Cat(void);
         ~Cat(void);
         Cat(const Cat &a_copy);
         Cat &operator=(const Cat &og);
         void makeSound(void) const;
+        void *getBrainAddress(void);
 };
 
 #endif
