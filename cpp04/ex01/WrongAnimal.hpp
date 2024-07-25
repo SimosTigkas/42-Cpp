@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:06:37 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 13:07:45 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:40:49 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class WrongAnimal
         
         virtual void    makeSound(void) const;
         std::string     getType(void) const;
-
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:04:30 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 13:17:23 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/25 22:40:59 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 # define WRONGCAT_HPP
 
 # include "WrongAnimal.hpp"
+# include "Brain.hpp"
 
 class WrongCat: public WrongAnimal
 {
+    protected:
+        Brain *brain;
     public:
         WrongCat(void);
         ~WrongCat(void);
