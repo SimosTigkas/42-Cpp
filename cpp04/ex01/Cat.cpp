@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 07:59:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 12:54:32 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/25 14:05:02 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ Cat::Cat(void): Animal()
 {
     this->type = "Cat";
     std::cout << "Cat Default Constructor has been called.\n" << std::endl;
+    this->brain = new Brain();
+    if (!this->brain)
+    {
+        std::cout << "Cat's brain could not be allocated" << std::endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
 Cat::~Cat(void)
@@ -35,6 +41,12 @@ Cat &Cat::operator=(const Cat &og)
     if (this != &og)
     {
         this->type = og.type;
+        this->brain = new Brain();
+        if (!this->brain)
+        {
+            std::cout << "Cat's brain could not be allocated" << std::endl;
+            exit(EXIT_FAILURE);
+        }
         return (*this);
     }
     return (*this);
@@ -43,4 +55,21 @@ Cat &Cat::operator=(const Cat &og)
 void Cat::makeSound(void) const
 {
     std::cout << this->type << " says ~> Moewww moewww!!" << std::endl;
+}
+
+void Cat::getIdeas(void) const
+{
+    int i = 0;
+    while (i < 100)
+    {
+        std::cout << "Idea number " << i << " is: " 
+            << this->brain->getIdea(i) << "with address ->" 
+            << this->brain->getIdeaAddress(i) << std::endl;
+        i++;
+    }    
+}
+
+void Cat::setIdea(int i, std::string idea)
+{
+    this->brain->setIdea(i, idea);
 }

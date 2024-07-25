@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:34:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 12:56:10 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/25 13:16:54 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 Animal::Animal(void)
 {
-    this->type = "Random_animal";
+    this->type = "Defult_animal";
     std::cout << "\nAnimal " << this->type << " Default Constructor has been called." << std::endl;
 }
 
-Animal::Animal(std::string name): type(name)
+Animal::Animal(std::string type): type(type)
 {   
-    this->type = "Random_animal";
-    std::cout << "Animal " << this->type << " has been created!!" << std::endl;
+    std::cout << "Animal " << type << " has been created!!" << std::endl;
 }
 
 Animal::Animal(const Animal &a_copy)
@@ -48,7 +47,7 @@ Animal::~Animal(void)
 
 void Animal::makeSound(void) const
 {
-    std::cout << "This animal does not know which sound to make...\n" << std::endl;
+    std::cout << "This animal does not know which sound to make.\n" << std::endl;
 }
 
 std::string Animal::getType(void) const

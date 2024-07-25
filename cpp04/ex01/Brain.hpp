@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:05:33 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/24 13:27:50 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/25 13:53:55 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ class Brain
         std::string ideas[100];
     public:
         Brain();
-        ~Brain();
+        virtual ~Brain();
         Brain(const Brain &a_copy);
         Brain &operator=(const Brain &og);
+        const std::string *getIdeaAddress(int i) const;
+        const std::string getIdea(int i) const;
+        void  setIdea(int i, std::string idea);
 };
 
 #endif
