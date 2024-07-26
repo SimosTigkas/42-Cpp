@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:01:04 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/25 14:06:23 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/26 17:17:21 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Dog: public Animal
         ~Dog(void);
         Dog(const Dog &a_copy);
         Dog &operator=(const Dog &og);
-        void makeSound(void) const;
+        virtual void makeSound(void) const override;
         void getIdeas(void) const;
         void setIdea(int i, std::string idea);
 };
