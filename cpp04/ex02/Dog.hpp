@@ -6,17 +6,17 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:01:04 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:17:21 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/26 17:33:28 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 # define DOG_HPP
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class Dog: public Animal
+class Dog: public AAnimal
 {
     protected:
         Brain *brain;

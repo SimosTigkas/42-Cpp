@@ -6,13 +6,13 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 07:59:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:17:03 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/26 17:33:03 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void): Animal()
+Cat::Cat(void): AAnimal()
 {
     this->type = "Cat";
     std::cout << "Cat Default Constructor has been called.\n" << std::endl;
@@ -29,7 +29,7 @@ Cat::~Cat(void)
     std::cout << "\nCat has been destroyed." << std::endl;
 }
 
-Cat::Cat(const Cat &a_copy): Animal(a_copy)
+Cat::Cat(const Cat &a_copy): AAnimal(a_copy)
 {
     *this = a_copy;
     std::cout << "Cat Copy Constructor has been called." << std::endl;

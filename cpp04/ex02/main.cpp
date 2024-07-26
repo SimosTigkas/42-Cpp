@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:03:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 00:08:39 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/26 17:34:29 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main(void)
 {
-	const Animal *meta[100];
+	const AAnimal *meta[100];
     int           i=0;
 
     while (i < 50)
@@ -42,7 +42,7 @@ int main(void)
     i=0;
     while (i < 100)
     {
-        std::cout << "Animal type: " << meta[i]->getType() << std::endl;
+        std::cout << "AAnimal type: " << meta[i]->getType() << std::endl;
         meta[i]->makeSound();
         i++;
     }

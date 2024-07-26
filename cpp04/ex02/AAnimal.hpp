@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 07:59:42 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:33:13 by stigkas          ###   ########.fr       */
+/*   Created: 2024/07/23 08:34:56 by stigkas           #+#    #+#             */
+/*   Updated: 2024/07/26 17:31:50 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
-# include "AAnimal.hpp"
-# include "Brain.hpp"
+# include <iostream>
+# include <string>
 
-class Cat: public AAnimal
+class AAnimal
 {
     protected:
-        Brain *brain;
+        std::string type;
     public:
-        Cat(void);
-        ~Cat(void);
-        Cat(const Cat &a_copy);
-        Cat &operator=(const Cat &og);
-        virtual void makeSound(void) const override;
-        void getIdeas(void) const;
-        void setIdea(int i, std::string idea);
+        AAnimal(void);
+        AAnimal(std::string type);
+        AAnimal(const AAnimal &a_copy);
+        virtual ~AAnimal(void);
+        AAnimal  &operator=(const AAnimal &og);
+        
+        virtual void    makeSound(void) const = 0;
+        std::string     getType(void) const;
 };
 
 #endif

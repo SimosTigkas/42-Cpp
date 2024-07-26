@@ -6,13 +6,13 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:00:42 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/25 14:07:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/26 17:33:41 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(void): Animal()
+Dog::Dog(void): AAnimal()
 {
     this->type = "Dog";
     std::cout << this->type << " Default Constructor has been called." << std::endl;
@@ -23,7 +23,7 @@ Dog::~Dog(void)
     std::cout << "\nDog has been destroyed." << std::endl;
 }
 
-Dog::Dog(const Dog &a_copy): Animal(a_copy)
+Dog::Dog(const Dog &a_copy): AAnimal(a_copy)
 {
     *this = a_copy;
     std::cout << "Dog Copy Constructor has been called." << std::endl;
