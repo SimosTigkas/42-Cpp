@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:03:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:41:48 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/27 12:51:39 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,19 +158,16 @@ int main(void)
     c->setIdea(97, ".I need more toys!!");
     c->setIdea(98, ".Let's push that glass of water!");
     c->setIdea(99, ".I should find out how many cats does the neighborhood has!!");
-    std::cout << "A wrong input would be: " << std::endl;
-    c->setIdea(102, "Wrong idea..");
-    
     Cat *d = new Cat(*c);
     if (!d)
     {
         std::cout << "Something went wrong with Cat's allocation." << std::endl;
         exit(EXIT_FAILURE);
     }
-    std::cout << "The " << c->getType() << "has these ideas: " << std::endl;
+    std::cout << "The " << c->getType() << " has these ideas: " << std::endl;
     c->getIdeas();
     delete(c);
-    std::cout << "The " << d->getType() << "has these ideas: " << std::endl;
+    std::cout << "The " << d->getType() << " has these ideas: " << std::endl;
     d->getIdeas();
     delete(d);
     return (0);
