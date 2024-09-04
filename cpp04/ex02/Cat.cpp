@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 07:59:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:42:15 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/27 13:06:36 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ Cat::Cat(void): AAnimal()
 
 Cat::~Cat(void)
 {
+    delete brain;
     std::cout << "\nCat has been destroyed." << std::endl;
 }
 
-Cat::Cat(const Cat &a_copy): AAnimal(a_copy)
+
+Cat::Cat(const Cat& a_copy) : AAnimal(a_copy), brain(new Brain(*a_copy.brain))
 {
-    *this = a_copy;
     std::cout << "Cat Copy Constructor has been called." << std::endl;
 }
 
@@ -40,14 +41,14 @@ Cat &Cat::operator=(const Cat &og)
     std::cout << "Cat assignment operator has been called." << std::endl;
     if (this != &og)
     {
-        this->type = og.type;
-        this->brain = new Brain();
-        if (!this->brain)
+        AAnimal::operator=(og);
+        delete brain;
+        brain = new Brain(*og.brain);
+        if (!brain)
         {
             std::cout << "Cat's brain could not be allocated" << std::endl;
             exit(EXIT_FAILURE);
         }
-        return (*this);
     }
     return (*this);
 }
@@ -63,7 +64,7 @@ void Cat::getIdeas(void) const
     while (i < 100)
     {
         std::cout << "Idea number " << i << " is: " 
-            << this->brain->getIdea(i) << "with address ->" 
+            << this->brain->getIdea(i) << "with address-> " 
             << this->brain->getIdeaAddress(i) << std::endl;
         i++;
     }    

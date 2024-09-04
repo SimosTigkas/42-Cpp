@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:03:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/04 11:44:08 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/04 11:53:35 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,6 @@ int main(void)
     c->setIdea(97, ".I need more toys!!");
     c->setIdea(98, ".Let's push that glass of water!");
     c->setIdea(99, ".I should find out how many cats does the neighborhood has!!");
-    std::cout << "A wrong input would be: " << std::endl;
-    c->setIdea(102, "Wrong idea..");
-    
     Cat *d = new Cat(*c);
     if (!d)
     {

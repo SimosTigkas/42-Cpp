@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:00:42 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:42:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/07/27 12:50:35 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void Dog::getIdeas(void) const
     while (i < 100)
     {
         std::cout << "Idea number " << i << " is: " 
-            << this->brain->getIdea(i) << "with address ->" 
+            << this->brain->getIdea(i) << " with address-> " 
             << this->brain->getIdeaAddress(i) << std::endl;
         i++;
     }    
