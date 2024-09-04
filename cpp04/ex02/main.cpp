@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:03:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/26 17:41:48 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/04 11:44:08 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,10 +167,10 @@ int main(void)
         std::cout << "Something went wrong with Cat's allocation." << std::endl;
         exit(EXIT_FAILURE);
     }
-    std::cout << "The " << c->getType() << "has these ideas: " << std::endl;
+    std::cout << "The " << c->getType() << " has these ideas: " << std::endl;
     c->getIdeas();
     delete(c);
-    std::cout << "The " << d->getType() << "has these ideas: " << std::endl;
+    std::cout << "The " << d->getType() << " has these ideas: " << std::endl;
     d->getIdeas();
     delete(d);
     return (0);
