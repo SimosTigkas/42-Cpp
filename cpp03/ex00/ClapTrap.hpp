@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:17:55 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/18 12:33:32 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/12 11:34:54 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class ClapTrap
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-        void setAttackDamage(unsigned int amount);
     private:
         std::string          name;
         unsigned int         hitPoints;

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 13:52:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:41:15 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 
 FragTrap::~FragTrap(void)
 {
-    std::cout << "FragTrap " << this->name << " has been destroyed!" << std::endl;
+    std::cout << "\nFragTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &a_copy): ClapTrap(a_copy)
@@ -50,7 +50,7 @@ void FragTrap::attack(const std::string& target)
         std::cout << "FragTrap " << this->name << " has no energy points left.." << std::endl;
         return ;
     }
-    if (this->hitPoints < 1)
+    if (this->hitPoints == 0)
         return ;
     std::cout << "FragTrap " << this->name 
         << " attacks " << target 
@@ -64,7 +64,12 @@ void FragTrap::highFivesGuys(void)
     if (this->energyPoints < 1)
     {
         std::cout << "FragTrap " << this->name << " is has no energy points left.." << std::endl;
-        exit(EXIT_FAILURE);
+        return;
+    }
+    if (this->hitPoints == 0)
+    {
+        std::cout << "FragTrap " << this->name << " is can't raise a hand for a high five.." << std::endl;
+        return;
     }
     std::cout << "FragTrap " << this->name << " raises a hand for a High Five: \U0000270B" << std::endl;
 }

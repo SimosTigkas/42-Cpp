@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:37 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 07:24:48 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:58:51 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ FragTrap::FragTrap(void)
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
-    hitPoints = 100;
-    energyPoints = 100;
-    attackDamage = 30;
+    this->hitPoints = 100;
+    this->energyPoints = 100;
+    this->attackDamage = 30;
     std::cout << "FragTrap " << name << " has been called!\n" << std::endl;
 }
 

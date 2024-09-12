@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:30 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/23 07:36:51 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:59:45 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_trap")
     this->hitPoints = FragTrap::hitPoints;
     this->energyPoints = ScavTrap::energyPoints;
     this->attackDamage = FragTrap::attackDamage;
-    std::cout << "DiamondTrap " << name << " Constructor has been called." << std::endl;
+    std::cout << "DiamondTrap " << this->attackDamage << " Constructor has been called." << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &a_copy): ClapTrap(a_copy), ScavTrap(a_copy), FragTrap(a_copy)

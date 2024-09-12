@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:12:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 16:28:04 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:39:40 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,24 @@ int main(void)
     FragTrap Venom("Venom");
     FragTrap Carnage("Carnage");
 
-    Venom.setAttackDamage(3);
     Venom.attack("Carnage");
-    Carnage.takeDamage(3);
+    Carnage.takeDamage(30);
 
-    Carnage.setAttackDamage(5);
     Carnage.attack("Venom");
-    Venom.takeDamage(5);
+    Venom.takeDamage(30);
     
-    Venom.setAttackDamage(6);
     Venom.attack("Carnage");
-    Carnage.takeDamage(6);
-    
-    Carnage.setAttackDamage(5);
+    Carnage.takeDamage(30);
+
     Carnage.attack("Venom");
-    Venom.takeDamage(5);
+    Venom.takeDamage(30);
     
-    Venom.beRepaired(8);
-    Venom.setAttackDamage(5);
+    Venom.beRepaired(80);
     Venom.attack("Carnage");
-    Carnage.takeDamage(5);
+    Carnage.takeDamage(30);
 
     Venom.highFivesGuys();
     Carnage.highFivesGuys();
 
-    std::cout << "\U0001F64F High five was successfully done!!\U0001F64F" << std::endl;
-    std::cout << std::endl;
     return (0);
 }
