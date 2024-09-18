@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/16 10:57:25 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/18 11:04:35 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ class DiamondTrap: public ScavTrap, public FragTrap
         std::string name;
         unsigned int         hitPoints;
         unsigned int         energyPoints;
-        unsigned int         attackDamage;
-    // DiamondTrap(void);        
+        unsigned int         attackDamage;     
 };
 
 #endif
