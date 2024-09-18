@@ -6,13 +6,13 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:37 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/12 12:58:51 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 10:59:48 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void): ClapTrap()
 {
     std::cout << "FragTrap " << this->name << " default constructor has been called." << std::endl;
 

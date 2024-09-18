@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/12 12:41:15 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 12:01:56 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
     hitPoints = 100;
     energyPoints = 100;
     attackDamage = 30;
-    std::cout << "FragTrap " << name << " has been called!\n" << std::endl;
+    std::cout << "FragTrap " << name << " has been called!" << std::endl;
 }
 
 FragTrap::~FragTrap(void)
@@ -27,7 +27,7 @@ FragTrap::~FragTrap(void)
 
 FragTrap::FragTrap(const FragTrap &a_copy): ClapTrap(a_copy)
 {
-    std::cout << "\nFlagTrap copy constructor has been called!" << std::endl;
+    std::cout << "FlagTrap copy constructor has been called!" << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &og)

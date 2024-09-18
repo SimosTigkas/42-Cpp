@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:13:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/12 12:27:12 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 11:29:03 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 ClapTrap::ClapTrap(std::string name): name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-    std::cout << "\nClapTrap " << name << " has been called!" << std::endl;
+    std::cout << "ClapTrap " << name << " has been called!" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-    std::cout << "ClapTrap " << this->name << " has been destroyed!\n" << std::endl;
+    std::cout << "ClapTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &a_copy)
@@ -70,8 +70,8 @@ void ClapTrap::takeDamage(unsigned int amount)
         return ;
     }
     this->hitPoints -= amount;
-    std::cout << this->name << " took " << amount << " points of damage.\n" << std::endl;
-    std::cout << this->name << " has " << this->hitPoints << " hit points left!\n" << std::endl;
+    std::cout << "ClapTrap " << this->name << " took " << amount << " points of damage and now has " \
+        << this->hitPoints << " hit points left!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -83,7 +83,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     }
     if (this->hitPoints == 0)
     {
-        std::cout << "ClapTrap " << this->name << " is already dead..the battle is over.." << std::endl;
+        std::cout << "ClapTrap " << this->name << " is already dead..\n" << std::endl;
         exit(EXIT_FAILURE);
     }
     this->hitPoints += amount;
@@ -91,6 +91,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << "ClapTrap " << this->name
         << " got " << amount 
         << " hit points back and now has total of " 
-        << this->hitPoints << " hit points!!!!!\n" 
+        << this->hitPoints << " hit points!!" 
         << std::endl;
 }

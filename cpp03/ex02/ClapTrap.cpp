@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:13:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/12 12:41:52 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 11:57:36 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(std::string name): name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-    std::cout << "\nClapTrap " << name << " has been called!" << std::endl;
+    std::cout << "ClapTrap " << name << " has been called!" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -67,8 +67,8 @@ void ClapTrap::takeDamage(unsigned int amount)
         return ;
     }
     this->hitPoints -= amount;
-    std::cout << this->name << " took " << amount << " points of damage.\n" << std::endl;
-    std::cout << this->name << " has " << this->hitPoints << " hit points left!\n" << std::endl;
+    std::cout << "ClapTrap " << this->name << " took " << amount << " points of damage and now has " \
+        << this->hitPoints << " hit points left!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -88,11 +88,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << "ClapTrap " << this->name
         << " got " << amount 
         << " hit points back and now has total of " 
-        << this->hitPoints << " hit points!!!!!\n" 
+        << this->hitPoints << " hit points!!" 
         << std::endl;
-}
-
-void ClapTrap::setAttackDamage(unsigned int amount)
-{
-    this->attackDamage = amount;
 }

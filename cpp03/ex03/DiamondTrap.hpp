@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:18:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/22 14:43:15 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 10:57:25 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class DiamondTrap: public ScavTrap, public FragTrap
         unsigned int         hitPoints;
         unsigned int         energyPoints;
         unsigned int         attackDamage;
-    DiamondTrap(void);        
+    // DiamondTrap(void);        
 };
 
 #endif

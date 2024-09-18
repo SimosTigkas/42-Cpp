@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:12:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/09/12 12:39:40 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 12:06:41 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int main(void)
     Venom.attack("Carnage");
     Carnage.takeDamage(30);
 
-    Venom.highFivesGuys();
     Carnage.highFivesGuys();
-
+    Venom.highFivesGuys();
     return (0);
 }

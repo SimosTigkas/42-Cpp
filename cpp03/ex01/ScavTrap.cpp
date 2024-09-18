@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:14:06 by stigkas           #+#    #+#             */
-/*   Updated: 2024/07/19 14:47:46 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/09/16 11:35:35 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
     hitPoints = 100;
     energyPoints = 50;
     attackDamage = 20;
-    std::cout << "ScavTrap " << name << " has been called!\n" << std::endl;
+    std::cout << "ScavTrap " << name << " has been called!" << std::endl;
 }
 
 ScavTrap::~ScavTrap(void)
@@ -27,7 +27,7 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap::ScavTrap(const ScavTrap &a_copy): ClapTrap(a_copy)
 {
-    std::cout << "\nScavTrap copy constructor has been called!" << std::endl;
+    std::cout << "ScavTrap copy constructor has been called!" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &og)
@@ -61,5 +61,5 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate(void)
 {
-    std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode!" << std::endl;
+    std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode!\n" << std::endl;
 }
