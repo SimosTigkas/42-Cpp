@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:35 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/23 17:33:30 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/24 14:31:16 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat::Bureaucrat(const Bureaucrat &a_copy)
 {
     this->grade = a_copy.grade;
-    std::cout << "Bureaucrat " << this->name << " with a grade: " << this->grade << "Copy Constructor has been called." << std::endl;
+    std::cout << "Bureaucrat " << this->name << " with a grade: " << this->grade << " Copy Constructor has been called." << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &og)

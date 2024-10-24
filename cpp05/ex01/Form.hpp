@@ -15,7 +15,9 @@
 
 # include "Bureaucrat.hpp"
 
-class Form: public Bureaucrat
+// class Bureaucrat;
+
+class Form
 {
     private:
         const std::string   name;
@@ -28,9 +30,9 @@ class Form: public Bureaucrat
         Form(std::string name, unsigned int sGrade, unsigned int eGrade);
         Form& operator=(const Form& og);
         Form(const Form &og);
-        const std::string	&getName() const;
-		const int			&getSGrade() const;
-		const int			&getEGrade() const;
+        std::string	getName() const;
+		int			getSGrade() const;
+		int			getEGrade() const;
 		bool				getIsSigned() const;
         class GradeTooLowException : public std::exception {
             public:
@@ -40,6 +42,7 @@ class Form: public Bureaucrat
             public:
                 const char *what() const throw();
         };
+        bool       beSigned(const Bureaucrat &bur);
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &og);
