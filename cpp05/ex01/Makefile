@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = Form
 
 C_FLAGS = -Wall -Wextra -Werror
 

@@ -98,7 +98,7 @@ bool Form::beSigned(const Bureaucrat &bur)
         throw Form::GradeTooLowException();
     if (this->isSigned)
     {
-        std::cout << bur.getName() << "cannot sign the form " << this->getName() << " since it's already signed" << std::endl;
+        std::cout << bur.getName() << " couldn't sign " << this->getName() << " because it's already signed." << std::endl;
         return false;
     }
     this->isSigned = true;
