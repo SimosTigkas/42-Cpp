@@ -13,8 +13,19 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+# include "AForm.hpp"
 
-
-
+class RobotomyRequestForm: public AForm
+{
+    private:
+        std::string target;
+    public:
+        RobotomyRequestForm(void);
+        RobotomyRequestForm(std::string target);
+        ~RobotomyRequestForm();
+		RobotomyRequestForm(const RobotomyRequestForm &a_copy);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm &og);
+        virtual void	execute(Bureaucrat const& executor) const override;
+};
 
 #endif
