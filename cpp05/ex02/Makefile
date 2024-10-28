@@ -2,9 +2,9 @@ NAME = Form
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = Bureaucrat.cpp main.cpp Form.cpp
+SRC = Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
-INC = Bureaucrat.hpp Form.hpp
+INC = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
