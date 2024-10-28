@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:59:23 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/28 15:12:41 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/28 16:50:57 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Bureaucrat {
         void                incrementGrade();
         void                decrementGrade();
         bool			    signForm(AForm &form) const;
-
+        void                executeForm(AForm const& form);
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &og);

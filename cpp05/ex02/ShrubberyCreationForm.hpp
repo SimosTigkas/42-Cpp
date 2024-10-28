@@ -13,8 +13,21 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
+# include "AForm.hpp"
+# include <fstream>
 
-
-
+class ShrubberyCreationForm: public AForm
+{
+    private:
+        std::string     target;
+    public:
+        ShrubberyCreationForm(void);
+        ShrubberyCreationForm(std::string target);
+        ~ShrubberyCreationForm(void);
+        ShrubberyCreationForm(const ShrubberyCreationForm &a_copy);
+        ShrubberyCreationForm& operator=(const ShrubberyCreationForm &og);
+        
+        virtual void    execute(Bureaucrat const& executor) const override;
+};
 
 #endif

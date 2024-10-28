@@ -59,6 +59,12 @@ const char *AForm::GradeTooHighException::what() const throw()
 	return error;
 }
 
+const char *AForm::FormIsNotSignedException::what() const throw()
+{
+    const char *error = "This form has not been signed yet.";
+    return error;
+}
+
 std::string AForm::getName(void) const
 {
     return this->name;
