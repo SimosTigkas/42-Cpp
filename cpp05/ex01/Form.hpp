@@ -14,6 +14,8 @@
 # define FORM_HPP
 
 # include "Bureaucrat.hpp"
+# include <sstream>
+# include <string>
 
 class Bureaucrat;
 
@@ -33,7 +35,7 @@ class Form
         std::string	getName() const;
 		int			getSGrade() const;
 		int			getEGrade() const;
-		bool				getIsSigned() const;
+		bool		getIsSigned() const;
         class GradeTooLowException : public std::exception {
             public:
                 const char *what() const throw();

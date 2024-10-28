@@ -14,7 +14,7 @@
 
 Form::Form(void): name("No name"), isSigned(false), sGrade(1), eGrade(1)
 {
-    std::cout << "Form of " << this->name <<"'s (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") Default Constructor has been called." << std::endl;
+    std::cout << "Form of " << this->name <<"'s (with signing grade: " << isSigned << " and execution grade: "<< eGrade << ") Default Constructor has been called." << std::endl;
 }
 
 Form::~Form(void)
@@ -22,7 +22,7 @@ Form::~Form(void)
     std::cout << "Form of " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been destroyed" << std::endl;
 }
 
-Form::Form(std::string name, unsigned int sGrade, unsigned int eGrade): name(name), sGrade(sGrade), eGrade(eGrade)
+Form::Form(std::string name, unsigned int sGrade, unsigned int eGrade): name(name), isSigned(false), sGrade(sGrade), eGrade(eGrade)
 {
     std::cout << "Form of " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been created" << std::endl;
     if (sGrade > 150 || eGrade > 150)
@@ -41,9 +41,6 @@ Form &Form::operator=(const Form &og)
     std::cout << "Form assignment operator has been called." << std::endl;
     if (this != &og)
     {
-        // this->name = og.name;
-        // this->sGrade = og.sGrade;
-        // this->eGrade = og.eGrade;
         this->isSigned = og.isSigned;
         return (*this);
     }
