@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:45 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/23 17:59:02 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:33:48 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat::Bureaucrat(const Bureaucrat &a_copy)
 {
     this->grade = a_copy.grade;
-    std::cout << "Bureaucrat " << this->name << " with a grade: " << this->grade << "Copy Constructor has been called." << std::endl;
+    std::cout << "Bureaucrat " << this->name << " with a grade: " << this->grade << " Copy Constructor has been called." << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &og)
@@ -92,5 +92,21 @@ void Bureaucrat::decrementGrade(void)
         this->grade = this->grade + 1;
     else
         throw Bureaucrat::GradeTooLowException();
+}
+
+bool Bureaucrat::signForm(Form &form) const
+{
+    try
+    {
+        if (form.beSigned(*this) == false)
+            return false;
+    }
+    catch(Form::GradeTooLowException& e)
+    {
+        std::cout << this->name << " couldn't sign " << form.getName() << " because the signing grade is " << form.getSGrade() << "." << std::endl;
+        return false;
+    }
+    std::cout << this->name << " signed " << form.getName() << "." << std::endl;
+    return true;
 }
 

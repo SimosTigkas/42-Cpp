@@ -1,8 +1,8 @@
-NAME = Bureaucrat
+NAME = Form
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = Bureaucrat.cpp main.cpp From.cpp
+SRC = Bureaucrat.cpp main.cpp Form.cpp
 
 INC = Bureaucrat.hpp Form.hpp
 

@@ -6,8 +6,98 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:50 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/17 14:03:55 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:35:37 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+int main(void)
+{   
+	try
+	{
+		Form form("Camera renting permit", 0, 70);
+	}
+	catch(const Form::GradeTooHighException& e)
+	{
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
+
+	try
+	{
+		Form form("Camera renting permit", 150, 151);
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
+
+	try
+	{
+		Form cameraRenting("Camera renting permit", 1, 150);
+		std::cout << cameraRenting << std::endl;
+		Form gearRenting("Gear renting permit", 70, 150);
+		std::cout << gearRenting << std::endl;
+		std::cout << "Original: " << cameraRenting << std::endl;
+		Bureaucrat Antti("Antti", 1);
+		gearRenting.beSigned(Antti);
+		cameraRenting = gearRenting;
+		std::cout << "After: " << cameraRenting << std::endl;
+	}
+	catch(const Form::GradeTooHighException& e)
+	{
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
+
+	try
+	{
+		Form form("Camera renting", 30, 35);
+		std::cout << form << std::endl;
+		Bureaucrat Antti("Antti", 70);
+		Antti.signForm(form);
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
+
+	try
+	{
+		Form form("Camera renting", 30, 35);
+		std::cout << form << std::endl;
+		Bureaucrat Antti("Antti", 70);
+		form.beSigned(Antti);
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
+
+	try
+	{
+		Form cameraRenting("Camera renting permit", 1, 150);
+		std::cout << cameraRenting << std::endl;
+		Bureaucrat Antti("Antti", 1);
+		if (!Antti.signForm(cameraRenting))
+			std::cerr << "FAIL" << std::endl;
+		std::cout << cameraRenting << std::endl;
+		Form gearRenting("Gear renting permit", 70, 150);
+		std::cout << gearRenting << std::endl;
+		if (!gearRenting.beSigned(Antti))
+			std::cerr << "FAIL" << std::endl;
+		std::cout << gearRenting << std::endl;
+	}
+	catch(const Form::GradeTooHighException& e)
+	{
+		std::cerr << "\033[31mFAIL: " << e.what() << "\033[0m" << std::endl;
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << "\033[31mFAIL: " << e.what() << "\033[0m" << std::endl;
+	}
+	return (0);
+}
