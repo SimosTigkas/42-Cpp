@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:59:23 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/28 13:34:13 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:12:41 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <iostream>
 #include <stdexcept>
 
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -42,7 +42,7 @@ class Bureaucrat {
         const std::string   getName() const;
         void                incrementGrade();
         void                decrementGrade();
-        bool			    signForm(Form &form) const;
+        bool			    signForm(AForm &form) const;
 
 };
 

@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/28 15:11:59 by stigkas           #+#    #+#             */
+/*   Updated: 2024/10/28 15:11:59 by stigkas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef AFORM_HPP
+# define AFORM_HPP
+
+# include "Bureaucrat.hpp"
+# include <sstream>
+# include <string>
+
+class Bureaucrat;
+
+class AForm
+{
+    private:
+        const std::string   name;
+        bool                isSigned;
+        const int           sGrade;
+        const int           eGrade;
+    public:
+        AForm(void);
+        ~AForm(void);
+        AForm(std::string name, unsigned int sGrade, unsigned int eGrade);
+        AForm& operator=(const AForm& og);
+        AForm(const AForm &og);
+        std::string	getName() const;
+		int			getSGrade() const;
+		int			getEGrade() const;
+		bool		getIsSigned() const;
+        class GradeTooLowException : public std::exception {
+            public:
+                const char *what() const throw();
+        };
+        class GradeTooHighException : public std::exception {
+            public:
+                const char *what() const throw();
+        };
+        bool       beSigned(const Bureaucrat &bur);
+};
+
+std::ostream &operator<<(std::ostream &out, const AForm &og);
+
+#endif
