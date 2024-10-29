@@ -1,4 +1,4 @@
-NAME = Form
+NAME = manyForms
 
 C_FLAGS = -Wall -Wextra -Werror
 

@@ -6,98 +6,39 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:50 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/28 18:03:16 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:00:17 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 
-// int main(void)
-// {   
-// 	try
-// 	{
-// 		AForm form("Camera renting permit", 0, 70);
-// 	}
-// 	catch(const AForm::GradeTooHighException& e)
-// 	{
-// 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
-// 	}
+int main(void) 
+{
+    ShrubberyCreationForm blueberry("mustikka");
+    Bureaucrat Anton;
+    Bureaucrat Antti("Antti", 1);
 
-// 	try
-// 	{
-// 		AForm form("Camera renting permit", 150, 151);
-// 	}
-// 	catch(const AForm::GradeTooLowException& e)
-// 	{
-// 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
-// 	}
+    Anton.signForm(blueberry);
+    Anton.executeForm(blueberry);
+    Antti.signForm(blueberry);
+    Antti.executeForm(blueberry);
 
-// 	try
-// 	{
-// 		AForm cameraRenting("Camera renting permit", 1, 150);
-// 		std::cout << cameraRenting << std::endl;
-// 		AForm gearRenting("Gear renting permit", 70, 150);
-// 		std::cout << gearRenting << std::endl;
-// 		std::cout << "Original: " << cameraRenting << std::endl;
-// 		Bureaucrat Antti("Antti", 1);
-// 		gearRenting.beSigned(Antti);
-// 		cameraRenting = gearRenting;
-// 		std::cout << "After: " << cameraRenting << std::endl;
-// 	}
-// 	catch(const AForm::GradeTooHighException& e)
-// 	{
-// 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
-// 	}
-// 	catch(const AForm::GradeTooLowException& e)
-// 	{
-// 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
-// 	}
+    PresidentialPardonForm zaphodPardon("Zaphod");
+    Anton.signForm(zaphodPardon);
+    Anton.executeForm(zaphodPardon);
+    Antti.signForm(zaphodPardon);
+    Antti.executeForm(zaphodPardon);
 
-// 	try
-// 	{
-// 		AForm form("Camera renting", 30, 35);
-// 		std::cout << form << std::endl;
-// 		Bureaucrat Antti("Antti", 70);
-// 		Antti.signForm(form);
-// 	}
-// 	catch(const AForm::GradeTooLowException& e)
-// 	{
-// 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
-// 	}
+    RobotomyRequestForm drill("driller");
+    Anton.signForm(drill);
+    Anton.executeForm(drill);
+    Antti.signForm(drill);
+    Antti.executeForm(drill);
+    Anton = Antti;
+    Anton.executeForm(drill);
 
-// 	try
-// 	{
-// 		AForm form("Camera renting", 30, 35);
-// 		std::cout << form << std::endl;
-// 		Bureaucrat Antti("Antti", 70);
-// 		form.beSigned(Antti);
-// 	}
-// 	catch(const AForm::GradeTooLowException& e)
-// 	{
-// 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
-// 	}
-
-// 	try
-// 	{
-// 		AForm cameraRenting("Camera renting permit", 1, 150);
-// 		std::cout << cameraRenting << std::endl;
-// 		Bureaucrat Antti("Antti", 1);
-// 		if (!Antti.signForm(cameraRenting))
-// 			std::cerr << "FAIL" << std::endl;
-// 		std::cout << cameraRenting << std::endl;
-// 		AForm gearRenting("Gear renting permit", 70, 150);
-// 		std::cout << gearRenting << std::endl;
-// 		if (!gearRenting.beSigned(Antti))
-// 			std::cerr << "FAIL" << std::endl;
-// 		std::cout << gearRenting << std::endl;
-// 	}
-// 	catch(const AForm::GradeTooHighException& e)
-// 	{
-// 		std::cerr << "\033[31mFAIL: " << e.what() << "\033[0m" << std::endl;
-// 	}
-// 	catch(const AForm::GradeTooLowException& e)
-// 	{
-// 		std::cerr << "\033[31mFAIL: " << e.what() << "\033[0m" << std::endl;
-// 	}
-// 	return (0);
-// }
+    return 0;
+}

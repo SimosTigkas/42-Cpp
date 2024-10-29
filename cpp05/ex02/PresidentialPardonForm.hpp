@@ -15,6 +15,8 @@
 
 # include "AForm.hpp"
 
+class AForm;
+
 class PresidentialPardonForm: public AForm
 {
     private:

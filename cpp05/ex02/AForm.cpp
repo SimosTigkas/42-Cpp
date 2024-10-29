@@ -70,12 +70,12 @@ std::string AForm::getName(void) const
     return this->name;
 }
 
-int AForm::getSGrade(void) const
+unsigned int AForm::getSGrade(void) const
 {
     return this->sGrade;
 }
 
-int AForm::getEGrade(void) const
+unsigned int AForm::getEGrade(void) const
 {
     return this->eGrade;
 }
@@ -95,7 +95,7 @@ std::ostream &operator<<(std::ostream &out, const AForm &og)
 bool AForm::beSigned(const Bureaucrat &bur)
 {
     std::cout << bur.getName() << " is trying to sign the Aform " << this->getName() << std::endl;
-    int signing_grade = bur.getGrade();
+    unsigned int signing_grade = bur.getGrade();
 
     if (signing_grade > this->sGrade)
         throw AForm::GradeTooLowException();

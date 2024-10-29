@@ -22,7 +22,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string the_target): AForm("P
     target = the_target;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &a_copy)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &a_copy): AForm(a_copy)
 {
     this->target = a_copy.target;
     std::cout << "PresidentialPardonForm " << this->target << " Copy Constructor has been called." <<std::endl;

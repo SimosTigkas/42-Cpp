@@ -22,8 +22,8 @@ class AForm
     private:
         const std::string   name;
         bool                isSigned;
-        const int           sGrade;
-        const int           eGrade;
+        const unsigned int           sGrade;
+        const unsigned int           eGrade;
     public:
         AForm(void);
         ~AForm(void);
@@ -31,8 +31,8 @@ class AForm
         AForm& operator=(const AForm& og);
         AForm(const AForm &og);
         std::string	getName() const;
-		int			getSGrade() const;
-		int			getEGrade() const;
+		unsigned int			getSGrade() const;
+		unsigned int			getEGrade() const;
 		bool        getIsSigned() const;
         class GradeTooLowException : public std::exception {
             public:

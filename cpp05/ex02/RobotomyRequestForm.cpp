@@ -22,7 +22,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string the_target): AForm("Robotom
     target = the_target;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &a_copy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &a_copy): AForm(a_copy)
 {
     this->target = a_copy.target;
     std::cout << "RobotomyRequestForm " << this->target << " Copy Constructor has been called." <<std::endl;

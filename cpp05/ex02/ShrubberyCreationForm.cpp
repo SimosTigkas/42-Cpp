@@ -22,7 +22,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string the_target): AForm("Shr
     target = the_target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &a_copy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &a_copy): AForm(a_copy)
 {
     this->target = a_copy.target;
     std::cout << "ShrubberyCreationForm " << this->target << " Copy Constructor has been called." <<std::endl;
