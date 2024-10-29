@@ -25,26 +25,35 @@ Intern::~Intern(void)
     std::cout << "Intern Destructor has been called." << std::endl;
 }
 
-AForm* Intern::makeForm(std::string formName, std::string target)
-{
-    std::string namesOfForms[3] = {"Shrubbery Creation", "Robotomy Request", "Presidential Pardon"};
-    int i = 0;
+// AForm* Intern::makeForm(std::string formName, std::string target)
+// {
+//     std::string namesOfForms[3] = {"Shrubbery Creation", "Robotomy Request", "Presidential Pardon"};
+//     int i = 0;
 
-    while (i < 3)
-    {
-        if (formName == namesOfForms[i])
-        {
-            switch (i)
-            {
-                case 0:
-                    return new ShrubberyCreationForm(target);
-                case 1:
-                    return new RobotomyRequestForm(target);
-                case 2:
-                    return new PresidentialPardonForm(target);
-            }
-        }
-        i++;
-    }
-    return nullptr;
-}
+//     while (i < 3)
+//     {
+//         if (formName == namesOfForms[i])
+//         {
+//             switch (i)
+//             {
+//                 case 0:
+//                 {
+//                     std::cout << "Intern " << target << "creates a Shrubbery Creation Form." <<std::endl;
+//                     return new ShrubberyCreationForm(target);
+//                 }
+//                 case 1:
+//                 {
+//                     std::cout << "Intern " << target << "creates a Robotomy Request Form." <<std::endl;
+//                     return new RobotomyRequestForm(target);
+//                 }
+//                 case 2:
+//                 {
+//                     std::cout << "Intern " << target << "creates a Presidential Pardon Form." <<std::endl;
+//                     return new PresidentialPardonForm(target);
+//                 }
+//             }
+//         }
+//         i++;
+//     }
+//     return nullptr;
+// }
