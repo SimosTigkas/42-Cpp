@@ -35,7 +35,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &og)
 {
-    std::cout << "Bureaucrat assignment operator has been called." << std::endl;
+    std::cout << "ShrubberyCreationForm assignment operator has been called." << std::endl;
     if (this != &og)
     {
         this->target = og.target;
