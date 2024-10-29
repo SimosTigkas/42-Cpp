@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:45 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/28 15:13:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/29 13:32:24 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,3 +110,16 @@ bool Bureaucrat::signForm(AForm &form) const
     return true;
 }
 
+void Bureaucrat::executeForm(AForm const &form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << this->name << " executed " << form.getName() << "." << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this->name << " failed to execute " << form.getName() << ", because " << e.what() << std::endl;
+    }
+    
+}
