@@ -84,10 +84,13 @@ AForm* Intern::makeForm(std::string formName, std::string target)
             {
                 case 0:
                     form = createShrubberyForm(target);
+					break ;
                 case 1:
                     form = createRobotomyForm(target);
+					break ;
                 case 2:
                     form = createPresidentalForm(target);
+					break ;
             }
         }
         i++;

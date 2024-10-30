@@ -14,17 +14,17 @@
 
 AForm::AForm(void): name("No name"), isSigned(false), sGrade(1), eGrade(1)
 {
-    std::cout << "AForm of " << this->name <<"'s (with signing grade: " << isSigned << " and execution grade: "<< eGrade << ") Default Constructor has been called." << std::endl;
+    std::cout << "AForm " << this->name <<"'s (with signing grade: " << isSigned << " and execution grade: "<< eGrade << ") Default Constructor has been called." << std::endl;
 }
 
 AForm::~AForm(void)
 {
-    std::cout << "AForm of " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been destroyed" << std::endl;
+    std::cout << "AForm " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been destroyed" << std::endl;
 }
 
 AForm::AForm(std::string name, unsigned int sGrade, unsigned int eGrade): name(name), isSigned(false), sGrade(sGrade), eGrade(eGrade)
 {
-    std::cout << "AForm of " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been created" << std::endl;
+    std::cout << "AForm " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been created" << std::endl;
     if (sGrade > 150 || eGrade > 150)
         throw AForm::GradeTooLowException();
     else if (sGrade < 1 || eGrade < 1)
@@ -33,7 +33,7 @@ AForm::AForm(std::string name, unsigned int sGrade, unsigned int eGrade): name(n
 
 AForm::AForm(const AForm &a_copy): name(a_copy.name),  isSigned(a_copy.isSigned), sGrade(a_copy.sGrade), eGrade(a_copy.eGrade)
 {
-    std::cout << "AForm of " << name <<"'s (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") Copy Constructor has been called." << std::endl;
+    std::cout << "AForm " << name <<"'s (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") Copy Constructor has been called." << std::endl;
 }
 
 AForm &AForm::operator=(const AForm &og)
@@ -111,7 +111,7 @@ bool AForm::beSigned(const Bureaucrat &bur)
         return false;
     }
     this->isSigned = true;
-    std::cout << "The Aform " << this->getName() << "is now signed by " << bur.getName() << std::endl;
+    std::cout << "The Aform " << this->getName() << " is now signed by " << bur.getName() << std::endl;
     return (this->isSigned); 
 }
 

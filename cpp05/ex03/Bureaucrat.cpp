@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:45 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/29 13:32:24 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:12:45 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade): name(name), grade(grade)
         throw Bureaucrat::GradeTooHighException();
 }
 
-Bureaucrat::Bureaucrat(void): name("Antti"), grade(145)
+Bureaucrat::Bureaucrat(void)
 {
-    std::cout << "\nBureaucrat " << this->name << " (with grade: " << this->grade << ") Default Constructor has been called." << std::endl;
+    std::cout << "\nBureaucrat Default Constructor has been called." << std::endl;
 }
 
 Bureaucrat::~Bureaucrat(void)
