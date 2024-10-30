@@ -105,7 +105,7 @@ bool AForm::beSigned(const Bureaucrat &bur)
         return false;
     }
     this->isSigned = true;
-    std::cout << "The Aform " << this->getName() << "is now signed by " << bur.getName() << std::endl;
+    std::cout << "The Aform " << this->getName() << " is now signed by " << bur.getName() << std::endl;
     return (this->isSigned); 
 }
 
