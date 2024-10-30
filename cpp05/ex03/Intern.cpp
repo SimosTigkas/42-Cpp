@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 
 Intern::Intern(void)
 {
@@ -25,35 +22,79 @@ Intern::~Intern(void)
     std::cout << "Intern Destructor has been called." << std::endl;
 }
 
-// AForm* Intern::makeForm(std::string formName, std::string target)
-// {
-//     std::string namesOfForms[3] = {"Shrubbery Creation", "Robotomy Request", "Presidential Pardon"};
-//     int i = 0;
+static AForm *createShrubberyForm(const std::string target)
+{
+	AForm *form;
 
-//     while (i < 3)
-//     {
-//         if (formName == namesOfForms[i])
-//         {
-//             switch (i)
-//             {
-//                 case 0:
-//                 {
-//                     std::cout << "Intern " << target << "creates a Shrubbery Creation Form." <<std::endl;
-//                     return new ShrubberyCreationForm(target);
-//                 }
-//                 case 1:
-//                 {
-//                     std::cout << "Intern " << target << "creates a Robotomy Request Form." <<std::endl;
-//                     return new RobotomyRequestForm(target);
-//                 }
-//                 case 2:
-//                 {
-//                     std::cout << "Intern " << target << "creates a Presidential Pardon Form." <<std::endl;
-//                     return new PresidentialPardonForm(target);
-//                 }
-//             }
-//         }
-//         i++;
-//     }
-//     return nullptr;
-// }
+	try
+	{
+		form = new ShrubberyCreationForm(target);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Memory allocation failed." << std::endl;
+	}
+
+	return form;
+}
+
+static AForm *createRobotomyForm(const std::string target)
+{
+	AForm *form;
+
+	try
+	{
+		form = new RobotomyRequestForm(target);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Memory allocation failed." << std::endl;
+	}
+
+	return form;
+}
+
+static AForm *createPresidentalForm(const std::string target)
+{
+	AForm *form;
+
+	try
+	{
+		form = new PresidentialPardonForm(target);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Memory allocation failed." << std::endl;
+	}
+	return form;
+}
+
+AForm* Intern::makeForm(std::string formName, std::string target)
+{
+    std::string forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
+    int i=0;
+    AForm *form = nullptr;
+    if (formName.empty())
+        throw AForm::FormDoesNotExist();
+    while (i < 3)
+    {
+        if (!forms[i].compare(formName))
+        {    
+            switch(i)
+            {
+                case 0:
+                    form = createShrubberyForm(target);
+                case 1:
+                    form = createRobotomyForm(target);
+                case 2:
+                    form = createPresidentalForm(target);
+            }
+        }
+        i++;
+    }
+    if (form != nullptr)
+        std::cout << "Intern created the form " << formName << std::endl;
+    else
+        throw AForm::FormDoesNotExist();
+    return form;
+}

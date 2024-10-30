@@ -65,6 +65,12 @@ const char *AForm::FormIsNotSignedException::what() const throw()
     return error;
 }
 
+const char *AForm::FormDoesNotExist::what() const throw()
+{
+    const char *error = "This form does not exist..";
+    return error;
+}
+
 std::string AForm::getName(void) const
 {
     return this->name;
