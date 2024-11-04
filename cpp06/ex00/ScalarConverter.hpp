@@ -14,16 +14,19 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <limits.h>
 
-class ScalarConverter
-{
-    private:
-        ScalarConverter(void);
-        ~ScalarConverter(void);
-        ScalarConverter(const ScalarConverter &a_copy);
-        ScalarConverter& operator=(const ScalarConverter& og);
-    public:
-        static void convert(std::string type);
-};
+ class ScalarConverter;
+
+ class ScalarConverter
+ {
+     private:
+         ScalarConverter(void);
+         ~ScalarConverter(void);
+         ScalarConverter(const ScalarConverter &a_copy);
+         ScalarConverter& operator=(const ScalarConverter& og);
+     public:
+         static void convert(std::string type);
+ };
 
 #endif

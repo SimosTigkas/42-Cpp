@@ -1,4 +1,4 @@
-NAME=ScalarConverter
+NAME = ScalarConverter
 
 C_FLAGS = -Wall -Wextra -Werror
 
@@ -13,7 +13,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	c++ $(C_FLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp $(SRC)
+%.o: %.cpp $(INC)
 	c++ $(C_FLAGS) -c $< -o $@
 
 clean:
