@@ -14,6 +14,8 @@
 
 int main(void)
 {
-
+    Data simos;
+    Data *ptr = Serializer::deserialize(Serializer::serialize(&simos));
+    std::cout << (ptr == &simos) << std::endl;
     return (0);
 }
