@@ -15,8 +15,8 @@
 
 struct Data
 {
-    const std::string name = "data";
-    const uint32_t value = 24;
+    const std::string name = "simos";
+    const uint32_t value = 27;
 };
 
 #endif
