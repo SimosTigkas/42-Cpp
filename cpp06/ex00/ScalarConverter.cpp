@@ -36,140 +36,139 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter& og)
     return *this;
 }
 
-#include <iomanip>  // Include this at the top of the file
-
 static void charConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
     std::cout << "char: " << type[0] << std::endl;
     std::cout << "int: ";
     try {
-		std::cout << static_cast<int>(type[0]) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
-	std::cout << "float: ";
-	try {
-		std::cout << static_cast<float>(type[0]);
-		std::cout <<"f" << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
-	std::cout << "double: ";
-	try {
-		std::cout << static_cast<double>(type[0]) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
+        std::cout << static_cast<int>(type[0]) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "float: ";
+    try {
+        std::cout << static_cast<float>(type[0]) << "f" << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "double: ";
+    try {
+        std::cout << static_cast<double>(type[0]) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
 }
 
 static void intConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
     int nmro = std::stoi(type);
-    std::cout << "int: " << nmro << std::endl;
+
     std::cout << "char: ";
     try {
-		if (nmro < 33 || nmro > 126)
-			std::cout << "impossible" << std::endl;
-		else
-		std::cout << static_cast<char>(nmro) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
-	std::cout << "float: ";
-	try {
-		std::cout << static_cast<float>(nmro);
-		std::cout <<"f" << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
-	std::cout << "double: ";
-	try {
-		std::cout << static_cast<double>(nmro) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
+        if (nmro < 33 || nmro > 126)
+            std::cout << "impossible" << std::endl;
+        else
+            std::cout << static_cast<char>(nmro) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "int: " << nmro << std::endl;
+    std::cout << "float: ";
+    try {
+        std::cout << static_cast<float>(nmro) << "f" << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "double: ";
+    try {
+        std::cout << static_cast<double>(nmro) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
 }
 
 static void floatConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
     float nmro = std::stof(type);
+
+    std::cout << "char: ";
+    try {
+        if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff" ||
+            type == "nan" || type == "inf" || type == "-inf")
+            std::cout << "impossible" << std::endl;
+        else
+            std::cout << static_cast<char>(nmro) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "int: ";
+    if (type == "nan" || type == "inff" || type == "-inff")
+        std::cout << "impossible" << std::endl;
+    else {
+        try {
+            std::cout << static_cast<int>(nmro) << std::endl;
+        }
+        catch (std::exception &e) {
+            std::cout << "impossible" << std::endl;
+        }
+    }
     std::cout << "float: " << nmro << "f" << std::endl;
-	std::cout << "char: ";
-	try {
-		if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff"
-				|| type == "nan" || type == "inf" || type == "-inf")
-			std::cout << "impossible" << std::endl;
-		else
-		    std::cout << static_cast<char>(nmro) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
-	std::cout << "int: ";
-	if (type == "nan" || type == "inff" || type == "-inff")
-		std::cout << "impossible" << std::endl;
-	else {
-		try {
-			std::cout << static_cast<int>(nmro) << std::endl;
-		}
-		catch(std::exception &e) {
-			std::cout << "impossible" << std::endl;
-		}
-	}
-	std::cout << "double: ";
-	try {
-		std::cout << static_cast<double>(nmro) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
+    std::cout << "double: ";
+    try {
+        std::cout << static_cast<double>(nmro) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
 }
 
 static void doubleConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
     double nmro = std::stod(type);
-	std::cout << "double: " << nmro << std::endl;
-	std::cout << "char: ";
-	try {
-		if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff"
-				|| type == "nan" || type == "inf" || type == "-inf")
-			std::cout << "impossible" << std::endl;
-		else
-		    std::cout << static_cast<char>(nmro) << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
-	std::cout << "int: ";
-	if (type == "nan" || type == "inf" || type == "-inf")
-		std::cout << "impossible" << std::endl;
-	else {
-		try {
-			std::cout << static_cast<int>(nmro) << std::endl;
-		}
-		catch(std::exception &e) {
-			std::cout << "impossible" << std::endl;
-		}
-	}
-	std::cout << "float: ";
-	try {
-		std::cout << static_cast<float>(nmro);
-		std::cout <<"f" << std::endl;
-	}
-	catch(std::exception &e) {
-		std::cout << "impossible" << std::endl;
-	}
+
+    std::cout << "char: ";
+    try {
+        if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff" ||
+            type == "nan" || type == "inf" || type == "-inf")
+            std::cout << "impossible" << std::endl;
+        else
+            std::cout << static_cast<char>(nmro) << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "int: ";
+    if (type == "nan" || type == "inf" || type == "-inf")
+        std::cout << "impossible" << std::endl;
+    else {
+        try {
+            std::cout << static_cast<int>(nmro) << std::endl;
+        }
+        catch (std::exception &e) {
+            std::cout << "impossible" << std::endl;
+        }
+    }
+    std::cout << "float: ";
+    try {
+        std::cout << static_cast<float>(nmro) << "f" << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "double: " << nmro << std::endl;
 }
+
 
 
 static int checkDigits(std::string strng)
