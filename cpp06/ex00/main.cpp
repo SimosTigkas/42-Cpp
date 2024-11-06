@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:45:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/06 11:57:30 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/06 15:10:12 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(int ac, char **av)
     {
         std::cout << "You need to add an argument to run this." <<std::endl;
     }
-    ScalarConverter::convert(av[1]); 
+    else
+        ScalarConverter::convert(av[1]); 
     return (0);
 }

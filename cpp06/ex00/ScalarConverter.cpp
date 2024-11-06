@@ -36,8 +36,11 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter& og)
     return *this;
 }
 
+#include <iomanip>  // Include this at the top of the file
+
 static void charConv(std::string type)
 {
+    std::cout << std::fixed << std::setprecision(1);
     std::cout << "char: " << type[0] << std::endl;
     std::cout << "int: ";
     try {
@@ -65,6 +68,7 @@ static void charConv(std::string type)
 
 static void intConv(std::string type)
 {
+    std::cout << std::fixed << std::setprecision(1);
     int nmro = std::stoi(type);
     std::cout << "int: " << nmro << std::endl;
     std::cout << "char: ";
@@ -96,8 +100,9 @@ static void intConv(std::string type)
 
 static void floatConv(std::string type)
 {
+    std::cout << std::fixed << std::setprecision(1);
     float nmro = std::stof(type);
-    std::cout << "float: " << nmro << std::endl;
+    std::cout << "float: " << nmro << "f" << std::endl;
 	std::cout << "char: ";
 	try {
 		if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff"
@@ -131,8 +136,9 @@ static void floatConv(std::string type)
 
 static void doubleConv(std::string type)
 {
+    std::cout << std::fixed << std::setprecision(1);
     double nmro = std::stod(type);
-	std::cout << "double: " << nmro << std::endl;;
+	std::cout << "double: " << nmro << std::endl;
 	std::cout << "char: ";
 	try {
 		if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff"
@@ -164,6 +170,7 @@ static void doubleConv(std::string type)
 		std::cout << "impossible" << std::endl;
 	}
 }
+
 
 static int checkDigits(std::string strng)
 {
