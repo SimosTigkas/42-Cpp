@@ -12,6 +12,7 @@
 
 #include "Serializer.hpp"
 
+
 Serializer::Serializer(void)
 {
     // std::cout << "Serializer Default Constructor has been called." << std::endl;

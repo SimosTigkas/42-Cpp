@@ -13,6 +13,7 @@
 #ifndef DATA_HPP
 # define DATA_HPP
 
+
 struct Data
 {
     const std::string name = "age";
