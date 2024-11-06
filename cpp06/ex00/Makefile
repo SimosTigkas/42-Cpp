@@ -1,4 +1,4 @@
-NAME = ScalarConverter
+NAME = convert
 
 C_FLAGS = -Wall -Wextra -Werror
 
