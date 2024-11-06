@@ -71,7 +71,7 @@ static void intConv(std::string type)
     std::cout << "char: ";
     try {
         if (nmro < 33 || nmro > 126)
-            std::cout << "impossible" << std::endl;
+            std::cout << "Non displayable" << std::endl;
         else
             std::cout << static_cast<char>(nmro) << std::endl;
     }
