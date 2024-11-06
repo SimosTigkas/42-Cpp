@@ -202,7 +202,11 @@ static int getType(std::string strng)
 {
     long strngtolong;
 
-    if (strng.find('.') != strng.max_size() && strng[strng.find('.') + 1] && !checkDigits(&strng[strng.find('.') + 1]))
+	if (strng == "-inff" || strng == "inff" || strng == "nanf")
+        return 2;
+    if (strng == "-inf" || strng == "inf" || strng == "nan")
+        return 3;
+    if (strng.find('.') != std::string::npos && strng[strng.find('.') + 1] && !checkDigits(&strng[strng.find('.') + 1]))
         return 4;
     try {
         strngtolong = std::stol(strng);
@@ -218,13 +222,9 @@ static int getType(std::string strng)
         return 0;
     else if (!std::isalpha(strng[0]))
         return 1;
-    else if (strng.back() == 'f' && strng.find('.') != strng.max_size())
+    else if (strng.back() == 'f' && strng.find('.') != std::string::npos)
         return 2;
-    else if (strng.find('.') != strng.max_size())
-        return 3;
-    if (strng == "-inff" || strng == "inf")
-        return 2;
-    if (strng == "-inf" || strng == "inf" || strng == "nan")
+    else if (strng.find('.') != std::string::npos)
         return 3;
     return 4;
 }
