@@ -12,7 +12,6 @@
 
 #include "Serializer.hpp"
 
-
 int main(void)
 {
     Data simos;

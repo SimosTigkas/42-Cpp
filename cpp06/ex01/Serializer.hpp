@@ -17,7 +17,6 @@
 #include <cstdint> 
 #include "Data.hpp"
 
-
 class Serializer
 {
     private:
