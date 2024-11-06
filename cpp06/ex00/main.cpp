@@ -6,12 +6,11 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:45:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/06 11:56:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:57:30 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
 
 int main(int ac, char **av)
 {
