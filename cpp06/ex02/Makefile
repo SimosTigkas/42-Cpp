@@ -2,9 +2,9 @@ NAME=IdentifyRealType
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = Serializer.cpp main.cpp
+SRC = Base.cpp main.cpp
 
-INC = Serializer.hpp Data.hpp
+INC = Base.hpp Data.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
