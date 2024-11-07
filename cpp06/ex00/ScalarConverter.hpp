@@ -14,6 +14,7 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <limits.h>
 
  class ScalarConverter;
@@ -30,3 +31,4 @@
  };
 
 #endif
+
