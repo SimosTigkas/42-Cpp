@@ -4,7 +4,7 @@ C_FLAGS = -Wall -Wextra -Werror
 
 SRC = Base.cpp main.cpp
 
-INC = Base.hpp Data.hpp
+INC = Base.hpp A.hpp B.hpp C.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
