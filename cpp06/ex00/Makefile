@@ -2,9 +2,9 @@ NAME = convert
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = Base.cpp main.cpp
+SRC = ScalarConverter.cpp main.cpp
 
-INC = Base.hpp
+INC = ScalarConverter.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
