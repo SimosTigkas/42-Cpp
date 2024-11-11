@@ -26,6 +26,7 @@ int main(void)
     int fps = 24;
     int cinematic_fps = 50;
 
+    std::cout << std::endl;
     std::cout << "Fps: " << fps << ", Cinematic fps: " << cinematic_fps <<std::endl;
     std::cout << "min(fps, cinematic_fps) = " << ::min(fps, cinematic_fps) << std::endl;
 	std::cout << "max(fps, cinematic_fps) = " << ::max(fps, cinematic_fps) << std::endl;
