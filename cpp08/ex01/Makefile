@@ -8,7 +8,6 @@ INC = Span.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
-EMOJI_COMPILE = 🛠️
 EMOJI_RUN = 🚀
 EMOJI_DONE = ✅
 EMOJI_CLEANING = 🧹

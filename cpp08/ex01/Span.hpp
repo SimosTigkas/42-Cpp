@@ -6,13 +6,46 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:53:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/12 16:55:24 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/13 14:06:42 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <iostream>
+# include <vector>
+# include <cmath>
 
+class Span {
+    private:
+        unsigned int     size;
+        std::vector<int> vec;
+    public:
+        Span(void);
+        Span(unsigned int nmro);
+        Span(const Span &a_copy);
+        Span& operator=(const Span &og);
+        ~Span(void);
+        void     addNumber(int nmro);
+        int      shortestSpan(void) const;
+        int      longestSpan(void) const;
+        class VecIsTooSmallException : public std::exception {
+            public:
+                const char *what(void) const throw()
+                {
+                    char *err = "The amount of elements at the vector are not enough to create a span.";
+                    return (err);
+                }
+        };
+        class VecIsFullException : public std::exception {
+            public:
+                const char *what(void) const throw()
+                {
+                    char *err = "The vector is already filled with the desired amount of numbers.";
+                    return (err);
+                }                
+        };
+};
 
 #endif
