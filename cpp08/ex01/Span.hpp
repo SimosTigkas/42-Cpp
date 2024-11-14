@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:53:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/13 14:06:42 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/14 11:13:45 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ class Span {
         int      longestSpan(void) const;
         class VecIsTooSmallException : public std::exception {
             public:
-                const char *what(void) const throw()
+                const char *what() const throw()
                 {
-                    char *err = "The amount of elements at the vector are not enough to create a span.";
+                    const char *err = "The amount of elements at the vector are not enough to create a span.";
                     return (err);
                 }
         };
         class VecIsFullException : public std::exception {
             public:
-                const char *what(void) const throw()
+                const char *what() const throw()
                 {
-                    char *err = "The vector is already filled with the desired amount of numbers.";
+                    const char *err = "The vector is already filled with the desired amount of numbers.";
                     return (err);
                 }                
         };

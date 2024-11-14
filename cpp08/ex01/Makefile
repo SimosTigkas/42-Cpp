@@ -2,7 +2,7 @@ NAME=span
 
 C_FLAGS = -Wall -Wextra -Werror
 
-SRC = main.cpp, Span.cpp
+SRC = Span.cpp main.cpp 
 
 INC = Span.hpp
 

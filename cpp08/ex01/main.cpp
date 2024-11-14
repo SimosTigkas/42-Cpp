@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:54:36 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/13 12:10:13 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/14 10:55:41 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.cpp"
+#include "Span.hpp"
 
 int main()
 {
