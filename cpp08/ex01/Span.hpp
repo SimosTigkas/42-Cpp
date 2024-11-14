@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:53:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/14 11:13:45 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/14 12:15:43 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Span {
         Span& operator=(const Span &og);
         ~Span(void);
         void     addNumber(int nmro);
+        void     printSpan(void);
         int      shortestSpan(void) const;
         int      longestSpan(void) const;
         class VecIsTooSmallException : public std::exception {

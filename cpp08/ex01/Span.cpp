@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:54:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/14 12:03:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/14 12:31:24 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ int Span::shortestSpan(void) const
     std::vector<int>::const_iterator i;
     std::vector<int>::const_iterator j;
     int temp = 0;
-    int dist = std::abs(vec.begin() - vec.end() + 1);
+    int dist = std::abs(*vec.begin() - *(vec.end() + 1));
     i = vec.begin();
     while (i < vec.end())
     {
         j = i + 1;
         while (j < vec.end())
         {
-            temp = std::abs(j - i);
+            temp = std::abs(*j - *i);
             if (temp < dist)
                 dist = temp;
             j++;
@@ -71,6 +71,17 @@ int Span::shortestSpan(void) const
         i++;
     }
     return (dist);
+}
+
+void Span::printSpan(void)
+{
+    std::vector<int>::const_iterator i;
+    i = vec.begin();
+    while (i < vec.end())
+    {
+        std::cout << *i <<std::endl;
+        i++;
+    }
 }
 
 int Span::longestSpan(void) const
