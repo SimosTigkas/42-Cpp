@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:36:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/18 17:35:58 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/18 17:37:12 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int main()
         ++it;
     }
     std::stack<int> s(mstack);
+
     std::cout << "\n~~List~~" <<std::endl;
     std::list<int> mlist;
     mlist.push_back(5);
