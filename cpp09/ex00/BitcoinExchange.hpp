@@ -1,13 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 17:38:54 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/18 17:38:54 by stigkas          ###   ########.fr       */
+/*   Created: 2024/11/18 21:56:21 by stigkas           #+#    #+#             */
+/*   Updated: 2024/11/18 21:56:21 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
+
+
+
+
+
+
+#endif
