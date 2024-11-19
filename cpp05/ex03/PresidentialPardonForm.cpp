@@ -17,7 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm(void)
     std::cout << "PresidentialPardonForm " << this->target << " Default constructor has been called." <<std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string the_target): AForm("PresidentialPardonForm", 72, 45)
+PresidentialPardonForm::PresidentialPardonForm(std::string the_target): AForm("PresidentialPardonForm", 25, 5)
 {
     target = the_target;
 }

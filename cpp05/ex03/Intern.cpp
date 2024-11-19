@@ -96,7 +96,7 @@ AForm* Intern::makeForm(std::string formName, std::string target)
         i++;
     }
     if (form != nullptr)
-        std::cout << "Intern created the form " << formName << std::endl;
+        std::cout << "Intern creates " << formName << std::endl;
     else
         throw AForm::FormDoesNotExist();
     return form;

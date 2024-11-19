@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:35 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/25 12:23:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/19 13:55:00 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ bool Bureaucrat::signForm(Form &form) const
         std::cout << this->name << " couldn't sign " << form.getName() << " because the signing grade is " << form.getSGrade() << "." << std::endl;
         return false;
     }
-    std::cout << this->name << " signed " << form.getName() << "." << std::endl;
+    std::cout << this->name << " signed " << form.getName() << std::endl;
     return true;
 }
