@@ -71,7 +71,7 @@ static AForm *createPresidentalForm(const std::string target)
 
 AForm* Intern::makeForm(std::string formName, std::string target)
 {
-    std::string forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
+    std::string forms[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
     int i=0;
     AForm *form = nullptr;
     if (formName.empty())

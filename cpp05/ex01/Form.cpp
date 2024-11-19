@@ -14,17 +14,17 @@
 
 Form::Form(void): name("No name"), isSigned(false), sGrade(1), eGrade(1)
 {
-    std::cout << "Form of " << this->name <<"'s (with signing grade: " << isSigned << " and execution grade: "<< eGrade << ") Default Constructor has been called." << std::endl;
+    std::cout << "Form " << this->name <<" (with signing grade: " << isSigned << " and execution grade: "<< eGrade << ") Default Constructor has been called." << std::endl;
 }
 
 Form::~Form(void)
 {
-    std::cout << "Form of " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been destroyed" << std::endl;
+    std::cout << "Form " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been destroyed" << std::endl;
 }
 
 Form::Form(std::string name, unsigned int sGrade, unsigned int eGrade): name(name), isSigned(false), sGrade(sGrade), eGrade(eGrade)
 {
-    std::cout << "Form of " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been created" << std::endl;
+    std::cout << "\nForm " << this->name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") has been created" << std::endl;
     if (sGrade > 150 || eGrade > 150)
         throw Form::GradeTooLowException();
     else if (sGrade < 1 || eGrade < 1)
@@ -33,7 +33,7 @@ Form::Form(std::string name, unsigned int sGrade, unsigned int eGrade): name(nam
 
 Form::Form(const Form &a_copy): name(a_copy.name),  isSigned(a_copy.isSigned), sGrade(a_copy.sGrade), eGrade(a_copy.eGrade)
 {
-    std::cout << "Form of " << name <<"'s (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") Copy Constructor has been called." << std::endl;
+    std::cout << "Form " << name <<" (with signing grade: " << sGrade << " and execution grade: "<< eGrade << ") Copy Constructor has been called." << std::endl;
 }
 
 Form &Form::operator=(const Form &og)
@@ -81,7 +81,7 @@ bool Form::getIsSigned(void) const
 
 std::ostream &operator<<(std::ostream &out, const Form &og)
 {
-    std::cout << "Form overload-insertion operator has been called." << std::endl;
+    // std::cout << "Form overload-insertion operator has been called." << std::endl;
 	out << "Form: " << og.getName() << "\nIs it signed? " << og.getIsSigned() << "\nSigning grade: " << og.getSGrade() << "\nExecution Grade: " << og.getEGrade() << ".\n";
     return (out);
 }
@@ -99,7 +99,7 @@ bool Form::beSigned(const Bureaucrat &bur)
         return false;
     }
     this->isSigned = true;
-    std::cout << "The form " << this->getName() << "is now signed by " << bur.getName() << std::endl;
+    std::cout << "The form " << this->getName() << " is now signed by " << bur.getName() << std::endl;
     return (this->isSigned); 
 }
 

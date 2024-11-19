@@ -20,6 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm(void)
 RobotomyRequestForm::RobotomyRequestForm(std::string the_target): AForm("RobotomyRequestForm", 72, 45)
 {
     target = the_target;
+    std::cout << "RobotomyRequestForm " << target << " has been created." <<std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &a_copy): AForm(a_copy)
@@ -60,7 +61,7 @@ void    RobotomyRequestForm::execute(Bureaucrat const& executor) const
         if (randomness % 2)
             std::cout << target << " has been robotomized successfully!" << std::endl;
         else
-            std::cout << target << " 's robotomy failed..." <<std::endl;
+            std::cout << target << " robotomy failed..." <<std::endl;
     }
     else
         throw GradeTooLowException();

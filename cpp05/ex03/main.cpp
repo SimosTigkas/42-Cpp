@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:50 by stigkas           #+#    #+#             */
-/*   Updated: 2024/10/30 13:30:54 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:26:32 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int main(void) 
 {
-    std::cout << "\nLET'S CREATE SOME FORMS!!\n" <<std::endl;
+    std::cout << "\n\033[34mLET'S CREATE SOME FORMS!!\n\033[0m" <<std::endl;
+
     ShrubberyCreationForm blueberry("mustikka");
     Bureaucrat anton("Anton", 7);
     std::cout << anton << std::endl;
@@ -28,7 +29,7 @@ int main(void)
     std::cout << std::endl;
     
     Intern simos;
-    AForm* stigkas = simos.makeForm("RobotomyRequest", "drill");
+    AForm* stigkas = simos.makeForm("RobotomyRequestForm", "drill");
     anton.signForm(*stigkas);
     anton.executeForm(*stigkas);
     antti.signForm(*stigkas);
@@ -40,7 +41,7 @@ int main(void)
     std::cout << std::endl;
     
     Intern safa;
-    AForm* stuna = safa.makeForm("PresidentialPardon", "Zaphod");
+    AForm* stuna = safa.makeForm("PresidentialPardonForm", "Zaphod");
     anton.signForm(*stuna);
     anton.executeForm(*stuna);
     antti.signForm(*stuna);

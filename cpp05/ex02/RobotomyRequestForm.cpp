@@ -20,6 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm(void)
 RobotomyRequestForm::RobotomyRequestForm(std::string the_target): AForm("RobotomyRequestForm", 72, 45)
 {
     target = the_target;
+    std::cout << "RobotomyRequestForm " << target << " has been created." <<std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &a_copy): AForm(a_copy)

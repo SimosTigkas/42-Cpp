@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:45 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/19 14:05:00 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:12:42 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &og)
     std::cout << "Bureaucrat assignment operator has been called." << std::endl;
     if (this != &og)
     {
-        // this->name = og.name;
         this->grade = og.grade;
         return (*this);
     }
@@ -73,7 +72,7 @@ const std::string Bureaucrat::getName(void) const
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &og)
 {
-    std::cout << "Bureaucrat overload-insertion operator has been called." << std::endl;
+    // std::cout << "Bureaucrat overload-insertion operator has been called." << std::endl;
     out << og.getName() << ", bureaucrat grade " << og.getGrade() << "." ;
     return (out);
 }
@@ -119,7 +118,7 @@ void Bureaucrat::executeForm(AForm const &form)
     }
     catch(const std::exception& e)
     {
-        std::cerr << this->name << " failed to execute " << form.getName() << ", because " << e.what() << std::endl;
+        std::cerr << this->name << " failed to execute " << form.getName() << ", because \n" << "\033[31m" << e.what() << "\033[0m" << std::endl;
     }
     
 }

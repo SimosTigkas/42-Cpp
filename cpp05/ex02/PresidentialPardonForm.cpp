@@ -20,6 +20,7 @@ PresidentialPardonForm::PresidentialPardonForm(void)
 PresidentialPardonForm::PresidentialPardonForm(std::string the_target): AForm("PresidentialPardonForm", 25, 5)
 {
     target = the_target;
+    std::cout << "PresidentialPardonForm " << target << " has been created." <<std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &a_copy): AForm(a_copy)

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:35 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/19 13:55:00 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:12:42 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &og)
     std::cout << "Bureaucrat assignment operator has been called." << std::endl;
     if (this != &og)
     {
-        // this->name = og.name;
         this->grade = og.grade;
         return (*this);
     }

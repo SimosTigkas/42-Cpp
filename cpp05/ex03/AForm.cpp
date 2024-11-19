@@ -93,14 +93,14 @@ bool AForm::getIsSigned(void) const
 
 std::ostream &operator<<(std::ostream &out, const AForm &og)
 {
-    std::cout << "AForm overload-insertion operator has been called." << std::endl;
+    // std::cout << "AForm overload-insertion operator has been called." << std::endl;
 	out << "AForm: " << og.getName() << "\nIs it signed? " << og.getIsSigned() << "\nSigning grade: " << og.getSGrade() << "\nExecution Grade: " << og.getEGrade() << ".\n";
     return (out);
 }
 
 bool AForm::beSigned(const Bureaucrat &bur)
 {
-    std::cout << bur.getName() << " is trying to sign the Aform " << this->getName() << std::endl;
+    std::cout << "\033[34m" << bur.getName() << " is trying to sign the Aform " << this->getName() << "\033[0m"<< std::endl;
     unsigned int signing_grade = bur.getGrade();
 
     if (signing_grade > this->sGrade)

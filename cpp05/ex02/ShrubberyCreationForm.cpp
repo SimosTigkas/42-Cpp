@@ -20,6 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void)
 ShrubberyCreationForm::ShrubberyCreationForm(std::string the_target): AForm("ShrubberyCreationForm", 145, 137)
 {
     target = the_target;
+    std::cout << "ShrubberyCreationForm " << target << " has been created." <<std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &a_copy): AForm(a_copy)
