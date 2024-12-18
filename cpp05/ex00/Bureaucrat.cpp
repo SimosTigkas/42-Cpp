@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/19 15:25:52 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/12/18 11:10:38 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &a_copy)
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &og)
 {
-    std::cout << "Bureaucrat assignment operator has been called." << std::endl;
+    // std::cout << "Bureaucrat assignment operator has been called." << std::endl;
     if (this != &og)
     {
         this->grade = og.grade;
@@ -72,7 +72,7 @@ const std::string Bureaucrat::getName(void) const
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &og)
 {
-    std::cout << "Bureaucrat overload-insertion operator has been called." << std::endl;
+    // std::cout << "Bureaucrat overload-insertion operator has been called." << std::endl;
     out << og.getName() << ", bureaucrat grade " << og.getGrade() << "." ;
     return (out);
 }

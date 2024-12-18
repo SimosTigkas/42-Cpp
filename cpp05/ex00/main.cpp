@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:29 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/19 15:32:56 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/12/18 11:13:40 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void)
 		std::cout << Antti << std::endl;
 		Bureaucrat Tomi("Tomi", 24);
 		std::cout << Tomi << std::endl;
-		std::cout << "Original: " << Antti << std::endl;
+		std::cout << "\nOriginal: " << Antti << std::endl;
 		Antti = Tomi;
 		std::cout << "After: " << Antti << std::endl;
 	}
@@ -32,7 +32,7 @@ int main(void)
 	{
 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
 	}
-    
+    std::cout << std::endl;
     try
 	{
 		Bureaucrat Antti("Antti", 150);
@@ -42,7 +42,7 @@ int main(void)
     {
 		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
     }
-
+	std::cout << std::endl;
     try
 	{
 		Bureaucrat Antti("Antti", 1);
@@ -56,7 +56,7 @@ int main(void)
 		Sofia.incrementGrade();
 		std::cout << Sofia << std::endl;
 		Sofia.decrementGrade();
-		std::cout << Sofia << std::endl;
+		std::cout << Sofia << "\n" <<std::endl;
 	}
 	catch(const Bureaucrat::GradeTooHighException& e)
 	{
