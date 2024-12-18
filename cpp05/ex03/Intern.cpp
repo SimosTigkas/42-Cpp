@@ -14,12 +14,25 @@
 
 Intern::Intern(void)
 {
-    std::cout << "Intern Default constructor has been called." << std::endl;
+    std::cout << "Intern Default Constructor has been called." << std::endl;
 }
 
 Intern::~Intern(void)
 {
     std::cout << "Intern Destructor has been called." << std::endl;
+}
+
+Intern::Intern(const Intern &a_copy)
+{
+	std::cout << "Intern Copy Constructor has been called." << std::endl;
+    (*this) = a_copy;
+}
+
+Intern &Intern::operator=(const Intern &og)
+{
+    std::cout << "Intern assignment operator has been called." << std::endl;
+	(void)og;
+    return (*this);
 }
 
 static AForm *createShrubberyForm(const std::string target)
