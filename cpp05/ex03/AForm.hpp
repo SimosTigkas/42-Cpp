@@ -26,7 +26,7 @@ class AForm
         const unsigned int           eGrade;
     public:
         AForm(void);
-        ~AForm(void);
+        virtual ~AForm(void);
         AForm(std::string name, unsigned int sGrade, unsigned int eGrade);
         AForm& operator=(const AForm& og);
         AForm(const AForm &og);

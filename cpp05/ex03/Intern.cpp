@@ -14,7 +14,21 @@
 
 Intern::Intern(void)
 {
-    std::cout << "Intern Default Constructor has been called." << std::endl;
+    std::cout << "Intern Default constructor has been called." << std::endl;
+}
+
+Intern::Intern(const Intern &a_copy)
+{
+	std::cout << "Intern Copy Constructor has been called." <<std::endl;
+	*this = a_copy;
+}
+
+Intern &Intern::operator=(const Intern &og)
+{
+	std::cout << "Intern assignment operator has been called." << std::endl;
+	if (this != &og)
+		return (*this);
+	return (*this);
 }
 
 Intern::~Intern(void)
@@ -22,65 +36,45 @@ Intern::~Intern(void)
     std::cout << "Intern Destructor has been called." << std::endl;
 }
 
-Intern::Intern(const Intern &a_copy)
+static AForm* createShrubberyForm(const std::string& target)
 {
-	std::cout << "Intern Copy Constructor has been called." << std::endl;
-    (*this) = a_copy;
+    try 
+	{
+        return new ShrubberyCreationForm(target);
+    } 
+	catch (const std::exception& e)
+	{
+        std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+        return nullptr;
+    }
 }
 
-Intern &Intern::operator=(const Intern &og)
+static AForm* createRobotomyForm(const std::string& target)
 {
-    std::cout << "Intern assignment operator has been called." << std::endl;
-	(void)og;
-    return (*this);
+    try
+	{
+        return new RobotomyRequestForm(target);
+    }
+	catch (const std::exception& e)
+	{
+        std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+        return nullptr;
+    }
 }
 
-static AForm *createShrubberyForm(const std::string target)
+static AForm* createPresidentalForm(const std::string& target)
 {
-	AForm *form;
-
-	try
+    try
 	{
-		form = new ShrubberyCreationForm(target);
-	}
-	catch (const std::exception &e)
+        return new PresidentialPardonForm(target);
+    }
+	catch (const std::exception& e)
 	{
-		std::cerr << "Memory allocation failed." << std::endl;
-	}
-
-	return form;
+        std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+        return nullptr;
+    }
 }
 
-static AForm *createRobotomyForm(const std::string target)
-{
-	AForm *form;
-
-	try
-	{
-		form = new RobotomyRequestForm(target);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Memory allocation failed." << std::endl;
-	}
-
-	return form;
-}
-
-static AForm *createPresidentalForm(const std::string target)
-{
-	AForm *form;
-
-	try
-	{
-		form = new PresidentialPardonForm(target);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Memory allocation failed." << std::endl;
-	}
-	return form;
-}
 
 AForm* Intern::makeForm(std::string formName, std::string target)
 {
@@ -108,9 +102,11 @@ AForm* Intern::makeForm(std::string formName, std::string target)
         }
         i++;
     }
-    if (form != nullptr)
+    if (form)
+	{
         std::cout << "Intern creates " << formName << std::endl;
-    else
+		return form;
+	}
+	else
         throw AForm::FormDoesNotExist();
-    return form;
 }

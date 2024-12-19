@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:50 by stigkas           #+#    #+#             */
-/*   Updated: 2024/11/19 18:26:32 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/12/19 12:40:05 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ int main(void)
     antti.signForm(*stuna);
     antti.executeForm(*stuna);
 
+    if (stigkas)
+        delete stigkas;
+    if (stuna)
+        delete stuna;
     std::cout << std::endl;
 
     return 0;
