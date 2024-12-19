@@ -203,9 +203,9 @@ static int getType(std::string strng)
     long strngtolong;
 
 	if (strng == "-inff" || strng == "inff" || strng == "nanf")
-        return 2;
+        return 2; //flow
     if (strng == "-inf" || strng == "inf" || strng == "nan")
-        return 3;
+        return 3; //double
     if (strng.find('.') != std::string::npos && strng[strng.find('.') + 1] && !checkDigits(&strng[strng.find('.') + 1]))
         return 4;
     try {
@@ -217,16 +217,16 @@ static int getType(std::string strng)
         return 4;
     }
     if (strng.length() == 1 && !std::isdigit(strng[0]))
-        return 0;
+        return 0; //char
     if (std::isalpha(strng[0]) && (strng.length() == 1))
-        return 0;
+        return 0; //char
     else if (!std::isalpha(strng[0]))
-        return 1;
+        return 1; //int
     else if (strng.back() == 'f' && strng.find('.') != std::string::npos)
-        return 2;
+        return 2; //float
     else if (strng.find('.') != std::string::npos)
-        return 3;
-    return 4;
+        return 3; //double
+    return 4; //error
 }
 
 static void errorHandler(std::string differentType)
