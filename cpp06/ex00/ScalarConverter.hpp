@@ -16,6 +16,7 @@
 # include <iostream>
 # include <iomanip>
 # include <limits.h>
+# include <regex>
 
  class ScalarConverter;
 

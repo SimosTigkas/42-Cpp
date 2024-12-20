@@ -39,7 +39,11 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter& og)
 static void charConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
-    std::cout << "char: " << type[0] << std::endl;
+    if (std::isprint(type[0]))
+        std::cout << "char: '" << type[0] << "'" << std::endl;
+    else
+        std::cout << "char: Non displayable" << std::endl;
+
     std::cout << "int: ";
     try {
         std::cout << static_cast<int>(type[0]) << std::endl;
@@ -66,32 +70,29 @@ static void charConv(std::string type)
 static void intConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
-    int nmro = std::stoi(type);
-
-    std::cout << "char: ";
+    
     try {
-        if (nmro < 33 || nmro > 126)
+        int nmro = std::stoi(type);
+        std::cout << "char: ";
+        if (nmro < 33 || nmro > 126) {
             std::cout << "Non displayable" << std::endl;
-        else
+        } else {
             std::cout << static_cast<char>(nmro) << std::endl;
-    }
-    catch (std::exception &e) {
-        std::cout << "impossible" << std::endl;
-    }
-    std::cout << "int: " << nmro << std::endl;
-    std::cout << "float: ";
-    try {
+        }
+
+        std::cout << "int: " << nmro << std::endl;
+
+        std::cout << "float: ";
         std::cout << static_cast<float>(nmro) << "f" << std::endl;
-    }
-    catch (std::exception &e) {
-        std::cout << "impossible" << std::endl;
-    }
-    std::cout << "double: ";
-    try {
+
+        std::cout << "double: ";
         std::cout << static_cast<double>(nmro) << std::endl;
     }
-    catch (std::exception &e) {
-        std::cout << "impossible" << std::endl;
+    catch (...) {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
     }
 }
 
@@ -113,8 +114,15 @@ static void floatConv(std::string type)
     }
     std::cout << "int: ";
     if (type == "nan" || type == "inff" || type == "-inff")
-        std::cout << "impossible" << std::endl;
-    else {
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: " << type << std::endl;
+        std::cout << "double: " << type.substr(0, type.size() - 1) << std::endl;
+        return;
+    }
+    else
+    {
         try {
             std::cout << static_cast<int>(nmro) << std::endl;
         }
@@ -150,7 +158,13 @@ static void doubleConv(std::string type)
     }
     std::cout << "int: ";
     if (type == "nan" || type == "inf" || type == "-inf")
-        std::cout << "impossible" << std::endl;
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: " << type << "f" << std::endl; // Add 'f'
+        std::cout << "double: " << type << std::endl;
+        return;
+    }
     else {
         try {
             std::cout << static_cast<int>(nmro) << std::endl;
@@ -200,42 +214,60 @@ static int checkDigits(std::string strng)
 
 static int getType(std::string strng)
 {
-    long strngtolong;
-
-	if (strng == "-inff" || strng == "inff" || strng == "nanf")
-        return 2; //flow
-    if (strng == "-inf" || strng == "inf" || strng == "nan")
-        return 3; //double
-    if (strng.find('.') != std::string::npos && strng[strng.find('.') + 1] && !checkDigits(&strng[strng.find('.') + 1]))
+    std::regex validInputPattern(R"(^[+-]?\d*\.?\d+f?$)");
+    if (!std::regex_match(strng, validInputPattern))
         return 4;
-    try {
-        strngtolong = std::stol(strng);
-        if (strngtolong > INT_MAX || strngtolong < INT_MIN)
+    else {
+	    if (strng == "-inff" || strng == "inff" || strng == "nanf")
+            return 2;
+        if (strng == "-inf" || strng == "inf" || strng == "nan")
+            return 3;
+        if (strng.find('.') != std::string::npos && strng[strng.find('.') + 1] && !checkDigits(&strng[strng.find('.') + 1]))
             return 4;
+        try {
+            long long strngtolong = std::stol(strng);
+            if (strngtolong > INT_MAX || strngtolong < INT_MIN)
+                return 4;
+        }
+        catch (const std::out_of_range&)
+        {
+            return 4;
+        }
+        catch (const std::invalid_argument&)
+        {
+            return 4;
+        }
+        if (strng.length() == 1 && !std::isdigit(strng[0]))
+            return 0;
+        if (std::isalpha(strng[0]) && (strng.length() == 1))
+            return 0;
+        else if (!std::isalpha(strng[0]))
+            return 1;
+        else if (strng.back() == 'f' && strng.find('.') != std::string::npos)
+            return 2;
+        else if (strng.find('.') != std::string::npos)
+            return 3;
     }
-    catch(const std::exception& e) {
-        return 4;
-    }
-    if (strng.length() == 1 && !std::isdigit(strng[0]))
-        return 0; //char
-    if (std::isalpha(strng[0]) && (strng.length() == 1))
-        return 0; //char
-    else if (!std::isalpha(strng[0]))
-        return 1; //int
-    else if (strng.back() == 'f' && strng.find('.') != std::string::npos)
-        return 2; //float
-    else if (strng.find('.') != std::string::npos)
-        return 3; //double
-    return 4; //error
-}
-
-static void errorHandler(std::string differentType)
-{
-    std::cout << "This " << differentType << " type conversion is impossible to happen. Please try again with char/int/float/double." << std::endl;
+    return 4;
 }
 
 void ScalarConverter::convert(std::string type)
 {
-    void (*differentTypes[5])(std::string) = {&charConv, &intConv, &floatConv, &doubleConv, &errorHandler};
-    differentTypes[getType(type)](type);
+    try
+    {
+        void (*differentTypes[4])(std::string) = {&charConv, &intConv, &floatConv, &doubleConv};
+        size_t decimalCount = std::count(type.begin(), type.end(), '.');
+        type.erase(0, type.find_first_not_of(" \t\n\r\f\v"));
+        type.erase(type.find_last_not_of(" \t\n\r\f\v") + 1); 
+        if (getType(type) == 4 || decimalCount > 1)
+            throw std::invalid_argument("Invalid input");
+        differentTypes[getType(type)](type);
+    }
+    catch(...)
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
+    }
 }
