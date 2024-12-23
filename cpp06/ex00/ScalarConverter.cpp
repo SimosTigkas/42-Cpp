@@ -74,19 +74,13 @@ static void intConv(std::string type)
     try {
         int nmro = std::stoi(type);
         std::cout << "char: ";
-        if (nmro < 33 || nmro > 126) {
+        if (!std::isprint(static_cast<char>(nmro)))
             std::cout << "Non displayable" << std::endl;
-        } else {
-            std::cout << static_cast<char>(nmro) << std::endl;
-        }
-
+        else
+            std::cout << "'" << static_cast<char>(nmro) << "'" << std::endl;
         std::cout << "int: " << nmro << std::endl;
-
-        std::cout << "float: ";
-        std::cout << static_cast<float>(nmro) << "f" << std::endl;
-
-        std::cout << "double: ";
-        std::cout << static_cast<double>(nmro) << std::endl;
+        std::cout << "float: " << static_cast<float>(nmro) << "f" << std::endl;
+        std::cout << "double: " << static_cast<double>(nmro) << std::endl;
     }
     catch (...) {
         std::cout << "char: impossible" << std::endl;
@@ -144,7 +138,6 @@ static void doubleConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
     double nmro = std::stod(type);
-
     std::cout << "char: ";
     try {
         if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff" ||
@@ -161,7 +154,7 @@ static void doubleConv(std::string type)
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << type << "f" << std::endl; // Add 'f'
+        std::cout << "float: " << type << "f" << std::endl;
         std::cout << "double: " << type << std::endl;
         return;
     }
@@ -182,8 +175,6 @@ static void doubleConv(std::string type)
     }
     std::cout << "double: " << nmro << std::endl;
 }
-
-
 
 static int checkDigits(std::string strng)
 {
@@ -214,7 +205,7 @@ static int checkDigits(std::string strng)
 
 static int getType(std::string strng)
 {
-    std::regex validInputPattern(R"(^[+-]?\d*\.?\d+f?$)");
+    std::regex validInputPattern(R"(^[+-]?(\d+(\.\d*)?|\.\d+)(f)?)");
     if (!std::regex_match(strng, validInputPattern))
         return 4;
     else {
