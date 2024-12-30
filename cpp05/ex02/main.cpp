@@ -67,7 +67,7 @@ int main(void)
             Anton->executeForm(drill);
             Antti->signForm(drill);
             Antti->executeForm(drill);
-            Anton = Antti;
+            *Anton = *Antti;
             Anton->executeForm(drill);
         }
         delete Anton;
