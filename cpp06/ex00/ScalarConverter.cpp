@@ -70,7 +70,7 @@ static void charConv(std::string type)
 static void intConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
-    
+    std::cout << "HEREEE" << std::endl;
     try {
         int nmro = std::stoi(type);
         std::cout << "char: ";
@@ -94,40 +94,25 @@ static void floatConv(std::string type)
 {
     std::cout << std::fixed << std::setprecision(1);
     float nmro = std::stof(type);
-
+    
     std::cout << "char: ";
     try {
-        if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff" ||
-            type == "nan" || type == "inf" || type == "-inf")
+        if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff" || type == "nanf" || type == "-nanf")
             std::cout << "impossible" << std::endl;
         else
             std::cout << static_cast<char>(nmro) << std::endl;
-    }
-    catch (std::exception &e) {
-        std::cout << "impossible" << std::endl;
-    }
-    std::cout << "int: ";
-    if (type == "nan" || type == "inff" || type == "-inff")
-    {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << type << std::endl;
-        std::cout << "double: " << type.substr(0, type.size() - 1) << std::endl;
-        return;
-    }
-    else
-    {
-        try {
-            std::cout << static_cast<int>(nmro) << std::endl;
-        }
-        catch (std::exception &e) {
+        std::cout << "int: ";
+        if (type == "nanf" || type == "inff" || type == "-inff" || type == "-nanf")
+        {
             std::cout << "impossible" << std::endl;
+            std::cout << "float: " << type << std::endl;
+            std::cout << "double: " << type.substr(0, type.size() - 1) << std::endl;
+            return;
         }
-    }
-    std::cout << "float: " << nmro << "f" << std::endl;
-    std::cout << "double: ";
-    try {
-        std::cout << static_cast<double>(nmro) << std::endl;
+        else
+            std::cout << static_cast<int>(nmro) << std::endl;
+        std::cout << "float: " << nmro << "f" << std::endl;
+        std::cout << "double: ";
     }
     catch (std::exception &e) {
         std::cout << "impossible" << std::endl;
@@ -140,34 +125,21 @@ static void doubleConv(std::string type)
     double nmro = std::stod(type);
     std::cout << "char: ";
     try {
-        if (nmro < 33 || nmro > 126 || type == "-inff" || type == "inff" ||
-            type == "nan" || type == "inf" || type == "-inf")
+        if (nmro < 33 || nmro > 126 || type == "nan" || type == "inf" || type == "-inf" || type == "-nan")
             std::cout << "impossible" << std::endl;
         else
             std::cout << static_cast<char>(nmro) << std::endl;
-    }
-    catch (std::exception &e) {
-        std::cout << "impossible" << std::endl;
-    }
-    std::cout << "int: ";
-    if (type == "nan" || type == "inf" || type == "-inf")
-    {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << type << "f" << std::endl;
-        std::cout << "double: " << type << std::endl;
-        return;
-    }
-    else {
-        try {
-            std::cout << static_cast<int>(nmro) << std::endl;
-        }
-        catch (std::exception &e) {
+        std::cout << "int: ";
+        if (type == "nan" || type == "inf" || type == "-inf" || type == "-nan")
+        {
             std::cout << "impossible" << std::endl;
+            std::cout << "float: " << type << "f" << std::endl;
+            std::cout << "double: " << type << std::endl;
+            return;
         }
-    }
-    std::cout << "float: ";
-    try {
+        else
+            std::cout << static_cast<int>(nmro) << std::endl;
+        std::cout << "float: ";
         std::cout << static_cast<float>(nmro) << "f" << std::endl;
     }
     catch (std::exception &e) {
@@ -205,13 +177,15 @@ static int checkDigits(std::string strng)
 
 static int getType(std::string strng)
 {
-    std::regex validInputPattern(R"(^[+-]?(\d+(\.\d*)?|\.\d+)(f)?)");
+    std::regex validInputPattern(R"(^[+-]?(\d+(\.\d*)?|\.\d+|nan|inf)(f)?)");
+    if (strng.length() == 1 && std::isprint(strng[0]) && !std::isdigit(strng[0]))
+            return 0;
     if (!std::regex_match(strng, validInputPattern))
         return 4;
     else {
-	    if (strng == "-inff" || strng == "inff" || strng == "nanf")
+	    if (strng == "-inff" || strng == "inff" || strng == "nanf" || strng == "-nanf")
             return 2;
-        if (strng == "-inf" || strng == "inf" || strng == "nan")
+        if (strng == "-inf" || strng == "inf" || strng == "nan" || strng == "-nan")
             return 3;
         if (strng.find('.') != std::string::npos && strng[strng.find('.') + 1] && !checkDigits(&strng[strng.find('.') + 1]))
             return 4;
@@ -228,18 +202,14 @@ static int getType(std::string strng)
         {
             return 4;
         }
-        if (strng.length() == 1 && !std::isdigit(strng[0]))
-            return 0;
-        if (std::isalpha(strng[0]) && (strng.length() == 1))
-            return 0;
-        else if (!std::isalpha(strng[0]))
+        if (!std::isalpha(strng[0]))
             return 1;
         else if (strng.back() == 'f' && strng.find('.') != std::string::npos)
             return 2;
         else if (strng.find('.') != std::string::npos)
             return 3;
     }
-    return 4;
+    return 1;
 }
 
 void ScalarConverter::convert(std::string type)
@@ -249,7 +219,7 @@ void ScalarConverter::convert(std::string type)
         void (*differentTypes[4])(std::string) = {&charConv, &intConv, &floatConv, &doubleConv};
         size_t decimalCount = std::count(type.begin(), type.end(), '.');
         type.erase(0, type.find_first_not_of(" \t\n\r\f\v"));
-        type.erase(type.find_last_not_of(" \t\n\r\f\v") + 1); 
+        type.erase(type.find_last_not_of(" \t\n\r\f\v") + 1);
         if (getType(type) == 4 || decimalCount > 1)
             throw std::invalid_argument("Invalid input");
         differentTypes[getType(type)](type);
