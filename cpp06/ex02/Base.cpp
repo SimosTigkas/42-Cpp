@@ -19,10 +19,13 @@ Base::~Base(void) {}
 
 Base* generate(void)
 {
-    int nmro;
 
-    std::srand(std::time(0));
-    nmro = rand() % 5;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 4);
+
+    int nmro = dis(gen);
+
     if (nmro == 3)
         return new A;
     else if (nmro == 4)

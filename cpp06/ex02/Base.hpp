@@ -16,6 +16,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <random>
 
 class Base
 {
