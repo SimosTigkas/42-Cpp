@@ -51,7 +51,7 @@ static void charConv(std::string type)
     catch (std::exception &e) {
         std::cout << "impossible" << std::endl;
     }
-    std::cout << "float: ";
+    std::cout << "float: ";  
     try {
         std::cout << static_cast<float>(type[0]) << "f" << std::endl;
     }
@@ -166,16 +166,12 @@ static int getType(std::string strng)
             return 2;
         if (strng == "-inf" || strng == "inf" || strng == "nan" || strng == "-nan")
             return 3;
-        // if (strng.find('.') != std::string::npos && strng[strng.find('.') + 1] == '\0')
-        //     return 4;
-        if (strng.back() == '.' && strng.find('.') == strng.size() - 1)
-            return 3;
         if (strng.find('.') != std::string::npos)
             return strng.back() == 'f' ? 2 : 3;
         if (strng.find('e') != std::string::npos || strng.find('E') != std::string::npos)
             return strng.back() == 'f' ? 2 : 3;
         try {
-            long long strngtolong = std::stol(strng);
+            long long strngtolong = std::stoll(strng);
             if (strngtolong > INT_MAX || strngtolong < INT_MIN)
                 return 4;
         }
@@ -192,7 +188,7 @@ static int getType(std::string strng)
     catch (...) {
         return 4;
     }
-    return 1;
+    return 4;
 }
 
 void ScalarConverter::convert(std::string type)
@@ -203,7 +199,6 @@ void ScalarConverter::convert(std::string type)
         size_t decimalCount = std::count(type.begin(), type.end(), '.');
         type.erase(0, type.find_first_not_of(" "));
         type.erase(type.find_last_not_of(" ") + 1);
-        std::cout << "Type: " << getType(type) << std::endl;
         if (getType(type) == 4 || decimalCount > 1)
             throw std::invalid_argument("Invalid input");
         differentTypes[getType(type)](type);
