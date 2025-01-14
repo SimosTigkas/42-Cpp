@@ -22,7 +22,7 @@ Array<T>::Array(void)
 template <typename T>
 Array<T>::Array(unsigned int n)
 {
-    arr = new T[n];
+    arr = new T[n]();
     ssize = n;
 }
 
@@ -92,17 +92,29 @@ int main(void)
     ints[2] = 3;
     ints[3] = 4;
     ints[4] = 5;
+    std::cout << "ints[0]= " << ints[0] << std::endl;
+    std::cout << "ints[1]= " << ints[1] << std::endl;
+    std::cout << "ints[2]= " << ints[2] << std::endl;
+    std::cout << "ints[3]= " << ints[3] << std::endl;
+    std::cout << "ints[4]= " << ints[4] << std::endl;
     try{
         ints[24] = 25;
     }
     catch (std::exception &e) {
-        std::cerr << "\033[31mIndex is too high. " << e.what() << "\033[0m" << std::endl;    
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;    
     }
     try{
-        ints[-24] = 23;
+        ints[2] = 23;
+        std::cout << std::endl;
     }
     catch (std::exception &e) {
-        std::cerr << "\033[31mIndex is too low. " << e.what() << "\033[0m" << std::endl;    
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;    
     }
-    std::cout << "The size of ints: " << ints.size() << std::endl;
+    std::cout << "ints[0]= " << ints[0] << std::endl;
+    std::cout << "ints[1]= " << ints[1] << std::endl;
+    std::cout << "ints[2]= " << ints[2] << std::endl;
+    std::cout << "ints[3]= " << ints[3] << std::endl;
+    std::cout << "ints[4]= " << ints[4] << std::endl;
+
+    std::cout << "The size of ints() is: " << ints.size() <<std::endl;
 }

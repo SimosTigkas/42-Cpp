@@ -1,6 +1,6 @@
 NAME=iter
 
-C_FLAGS = -Wall -Wextra -Werror
+C_FLAGS = -Wall -Wextra -Werror -std=c++17
 
 SRC = main.cpp
 
