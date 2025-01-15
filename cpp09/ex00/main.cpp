@@ -12,48 +12,50 @@
 
 #include "BitcoinExchange.hpp"
 
-/*
-• Your program must take a file as argument.
-• Each line in this file must use the following format: "date | value".
-• A valid date will always be in the following format: Year-Month-Day.
-• A valid value must be either a float or a positive integer, between 0 and 1000.
-• Your program should display on the standard output the result of the value multiplied
-by the exchange rate according to the date indicated in your database.
-*/
+static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
+{
+    //tomorrow
+    (void)file;
+    (void)bitcoin;
+}
 
+static std::map<std::string, double> checkDatabase(const std::string& file)
+{
+    std::ifstream infile(file);
+    std::string line;
+    std::string date;
+    double value;
+    infile.open(file, std::ios::in);
+    if (!infile.is_open()) throw std::runtime_error("Error while trying to open the file\n");
+    std::map<std::string, double> exRates;
+    std::getline(infile, line);
+    while (getline(infile, line))
+    {
+        size_t pos = line.find(",");
+        if (pos == std::string::npos) throw std::runtime_error("Error while trying to locate a comma in " + line);
+        date = line.substr(0, pos);
+        value = std::stod(line.substr(pos + 1));
+        if (!value) throw std::runtime_error("Conversion failed");
+        exRates[date] = value;
+    }
+    return exRates;
+}
 
 int main(int ac, char **av)
 {
-    std::ifstream   infile;
-    std::ofstream   outfile;
-    std::string     buffer;
-    size_t          exists;
-
     if (ac != 2)
     {
-        std::cout << "I need one argument: <filename>" << std::endl;
+        std::cout << "Try this: ./btc <filename>" << std::endl;
         return (1);
     }
-    infile.open(av[1], std::ios::in);
-    if (!infile.is_open())
+    try {
+        std::map<std::string, double> exRates = checkDatabase("data.csv");
+        BitcoinExchange bitcoin(exRates);
+        checkFile(av[1], bitcoin);
+    }  
+    catch (std::exception &e)
     {
-        std::cout << "Error while trying to open the file\n" << std::endl;
-        return (42);
-    }
-    while (getline(infile, buffer))
-    {
-        if ((exists = buffer.find(av[1])) == std::string::npos)
-            outfile << buffer << std::endl;
-        else 
-        {
-            while ((exists = buffer.find(av[2])) != std::string::npos)
-            {
-                //something   
-            }
-            outfile << buffer << std::endl;
-        }
-    }
-    outfile.close();
-    infile.close();
+		std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+	}
     return (0);
 }

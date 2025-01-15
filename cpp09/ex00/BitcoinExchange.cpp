@@ -11,3 +11,19 @@
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+BitcoinExchange::BitcoinExchange(void) {}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& a_copy) {
+    *this = a_copy;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange& og) {
+    if (this != &og)
+        _rates = og._rates;
+    return *this;
+}
+
+BitcoinExchange::~BitcoinExchange(void) {}
+
+BitcoinExchange::BitcoinExchange(const std::map<std::string, double>& rates): _rates(rates) {}

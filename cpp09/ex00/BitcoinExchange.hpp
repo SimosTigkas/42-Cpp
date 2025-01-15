@@ -15,9 +15,22 @@
 
 # include <iostream>
 # include <fstream>
+#include <sstream>
 # include <string>
+# include <map>
 
-
+class BitcoinExchange
+{
+    private:
+        std::map<std::string, double> _rates;
+    public:
+        BitcoinExchange(void);
+        BitcoinExchange(const std::map<std::string, double>& rates);
+        ~BitcoinExchange(void);
+        BitcoinExchange(const BitcoinExchange &a_copy);
+        BitcoinExchange &operator=(const BitcoinExchange &og);
+        double getRates(const std::string &date) const;
+};
 
 
 #endif
