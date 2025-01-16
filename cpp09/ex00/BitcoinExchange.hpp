@@ -18,6 +18,7 @@
 #include <sstream>
 # include <string>
 # include <map>
+# include <regex>
 
 class BitcoinExchange
 {
