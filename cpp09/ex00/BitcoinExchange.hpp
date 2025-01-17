@@ -30,7 +30,7 @@ class BitcoinExchange
         ~BitcoinExchange(void);
         BitcoinExchange(const BitcoinExchange &a_copy);
         BitcoinExchange &operator=(const BitcoinExchange &og);
-        double getRates(const std::string &date) const;
+        double getRate(const std::string &date) const;
 };
 
 

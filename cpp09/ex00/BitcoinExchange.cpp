@@ -37,3 +37,14 @@ BitcoinExchange::BitcoinExchange(const std::map<std::string, double>& rates)
     // std::cout << "BitcoinExchange parameterized Constructor has been called" << std::endl;
     this->_rates = rates;
 }
+
+double BitcoinExchange::getRate(const std::string& date) const {
+    if (_rates.empty())
+        throw std::runtime_error("Error: No exchange rates available");
+    std::map<std::string, double>::const_iterator it = _rates.lower_bound(date);
+    if (it == _rates.begin() && it->first != date)
+        throw std::runtime_error("Error: Date not found");
+    if (it == _rates.end() || it->first != date)
+        it--;
+    return it->second;
+}

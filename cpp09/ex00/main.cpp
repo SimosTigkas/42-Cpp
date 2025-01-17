@@ -34,6 +34,7 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
     std::string date;
     std::string strValue;
     double value;
+    double rate;
 
     if (!infile.is_open()) throw std::runtime_error("Error while trying to open the file\n");
     if (std::getline(infile, line))
@@ -53,11 +54,16 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
                 lineIsValid = true;
                 date = match_result[1].str() + "-" + match_result[2].str() + "-" + match_result[3].str();
                 strValue = match_result[4];
+                value = std::stod(strValue);
+                if (value <0 || value > 10000)
+                    throw std::runtime_error("The value does not belong to this: [0,1000]");
+                rate = bitcoin.getRate(date);
+                std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
             }
             else
                 throw std::runtime_error("Error: Wrong line format -> " + line);
         }
-        catch (const std::exception& e)
+        catch (...)
         {
             std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;    
         }
