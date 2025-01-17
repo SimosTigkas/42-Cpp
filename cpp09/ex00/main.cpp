@@ -72,7 +72,7 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
         std::cerr << "No valid lines found in the file" <<std::endl;
 }
 
-std::map<std::string, double> checkDatabase(const std::string &file)
+static std::map<std::string, double> checkDatabase(const std::string &file)
 {
     std::ifstream infile(file);
     std::string date;
