@@ -63,7 +63,7 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
             else
                 throw std::runtime_error("Error: Wrong line format -> " + line);
         }
-        catch (...)
+        catch (std::exception &e)
         {
             std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;    
         }
@@ -72,24 +72,26 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
         std::cerr << "No valid lines found in the file" <<std::endl;
 }
 
-static std::map<std::string, double> checkDatabase(const std::string& file)
+std::map<std::string, double> checkDatabase(const std::string &file)
 {
     std::ifstream infile(file);
-    std::string line;
     std::string date;
-    double value;
-    infile.open(file, std::ios::in);
-    if (!infile.is_open()) throw std::runtime_error("Error while trying to open the file\n");
     std::map<std::string, double> exRates;
+    std::string line;
+    double rate;
+    size_t pos;
+
+    if (!infile.is_open())
+        throw std::runtime_error("Error while trying to open the file");
     std::getline(infile, line);
-    while (getline(infile, line))
+    while (std::getline(infile, line))
     {
-        size_t pos = line.find(",");
-        if (pos == std::string::npos) throw std::runtime_error("Error while trying to locate a comma in " + line);
+        pos = line.find(',');
+        if (pos == std::string::npos)
+            throw std::runtime_error("Error while trying to locate a comma in " + line);
         date = line.substr(0, pos);
-        value = std::stod(line.substr(pos + 1));
-        if (!value) throw std::runtime_error("Conversion failed");
-        exRates[date] = value;
+        rate = std::stod(line.substr(pos + 1));
+        exRates[date] = rate;
     }
     return exRates;
 }
@@ -102,7 +104,7 @@ int main(int ac, char **av)
         return (1);
     }
     try {
-        std::map<std::string, double> exRates = checkDatabase("data.csv");
+        std::map<std::string, double> exRates = checkDatabase("./data.csv");
         BitcoinExchange bitcoin(exRates);
         checkFile(av[1], bitcoin);
     }  

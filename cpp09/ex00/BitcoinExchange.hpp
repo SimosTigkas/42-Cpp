@@ -33,5 +33,6 @@ class BitcoinExchange
         double getRate(const std::string &date) const;
 };
 
+std::map<std::string, double> checkDatabase(const std::string &file);
 
 #endif

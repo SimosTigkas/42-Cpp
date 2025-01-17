@@ -32,13 +32,14 @@ BitcoinExchange::~BitcoinExchange(void) {
     // std::cout << "BitcoinExchange Destructor has been called" << std::endl;
 }
 
-BitcoinExchange::BitcoinExchange(const std::map<std::string, double>& rates)
+BitcoinExchange::BitcoinExchange(const std::map<std::string, double> &rates)
 {
     // std::cout << "BitcoinExchange parameterized Constructor has been called" << std::endl;
-    this->_rates = rates;
+    _rates = rates;
 }
 
-double BitcoinExchange::getRate(const std::string& date) const {
+double BitcoinExchange::getRate(const std::string& date) const
+{
     if (_rates.empty())
         throw std::runtime_error("Error: No exchange rates available");
     std::map<std::string, double>::const_iterator it = _rates.lower_bound(date);
