@@ -32,7 +32,6 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
     std::smatch match_result;
     bool lineIsValid = false;
     std::string date;
-    std::string strValue;
     double value;
     double rate;
 
@@ -53,9 +52,8 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
             {
                 lineIsValid = true;
                 date = match_result[1].str() + "-" + match_result[2].str() + "-" + match_result[3].str();
-                strValue = match_result[4];
-                value = std::stod(strValue);
-                if (value <0 || value > 10000)
+                value = std::stod(match_result[4]);
+                if (value < 0 || value > 10000)
                     throw std::runtime_error("The value does not belong to this: [0,1000]");
                 rate = bitcoin.getRate(date);
                 std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
