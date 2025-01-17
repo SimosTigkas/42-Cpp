@@ -104,7 +104,7 @@ int main(int ac, char **av)
         return (1);
     }
     try {
-        std::map<std::string, double> exRates = checkDatabase("./data.csv");
+        std::map<std::string, double> exRates = checkDatabase("data.csv");
         BitcoinExchange bitcoin(exRates);
         checkFile(av[1], bitcoin);
     }  
