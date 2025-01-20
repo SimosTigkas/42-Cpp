@@ -32,8 +32,8 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
     std::smatch match_result;
     bool lineIsValid = false;
     std::string date;
-    std::string strValue;
     double value;
+    double rate;
 
     if (!infile.is_open()) throw std::runtime_error("Error while trying to open the file\n");
     if (std::getline(infile, line))
@@ -52,12 +52,16 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
             {
                 lineIsValid = true;
                 date = match_result[1].str() + "-" + match_result[2].str() + "-" + match_result[3].str();
-                strValue = match_result[4];
+                value = std::stod(match_result[4]);
+                if (value < 0 || value > 10000)
+                    throw std::runtime_error("The value does not belong to this: [0,1000]");
+                rate = bitcoin.getRate(date);
+                std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
             }
             else
                 throw std::runtime_error("Error: Wrong line format -> " + line);
         }
-        catch (const std::exception& e)
+        catch (std::exception &e)
         {
             std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;    
         }
@@ -66,24 +70,26 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
         std::cerr << "No valid lines found in the file" <<std::endl;
 }
 
-static std::map<std::string, double> checkDatabase(const std::string& file)
+static std::map<std::string, double> checkDatabase(const std::string &file)
 {
     std::ifstream infile(file);
-    std::string line;
     std::string date;
-    double value;
-    infile.open(file, std::ios::in);
-    if (!infile.is_open()) throw std::runtime_error("Error while trying to open the file\n");
     std::map<std::string, double> exRates;
+    std::string line;
+    double rate;
+    size_t pos;
+
+    if (!infile.is_open())
+        throw std::runtime_error("Error while trying to open the file");
     std::getline(infile, line);
-    while (getline(infile, line))
+    while (std::getline(infile, line))
     {
-        size_t pos = line.find(",");
-        if (pos == std::string::npos) throw std::runtime_error("Error while trying to locate a comma in " + line);
+        pos = line.find(',');
+        if (pos == std::string::npos)
+            throw std::runtime_error("Error while trying to locate a comma in " + line);
         date = line.substr(0, pos);
-        value = std::stod(line.substr(pos + 1));
-        if (!value) throw std::runtime_error("Conversion failed");
-        exRates[date] = value;
+        rate = std::stod(line.substr(pos + 1));
+        exRates[date] = rate;
     }
     return exRates;
 }
