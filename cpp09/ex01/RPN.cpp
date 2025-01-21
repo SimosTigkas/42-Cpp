@@ -57,7 +57,7 @@ bool RPN::checkExpression(const std::string &input)
 
     while (std::getline(expr, token, ' '))
     {
-        if (token.empty() || token.length() > 1 || (!std::isdigit(token[0]) && (ops.find(token) == std::string::npos)))
+        if ((token.length() == 1 && !std::isdigit(token[0]) && (ops.find(token) == std::string::npos)) || (token.length() == 2 && std::isdigit(token[1]) && token[0] != '-'))
             return false;
     }
     return (true);
@@ -71,22 +71,25 @@ int RPN::calculateExpression(const std::string &input)
 
     while (std::getline(expr, token, ' '))
     {
-        if (token.length() == 1 && std::isdigit(token[0]))
+        if ((token.length() == 1 && std::isdigit(token[0])) || (token.length() == 2 && std::isdigit(token[1]) && token[0] == '-'))
             myStack.push(std::stoi(token));
         else if (token.length() == 1 && ops.find(token) != std::string::npos && myStack.size() >= 2)
         {
             int first = myStack.top();
             myStack.pop();
             int second = myStack.top();
+            myStack.pop();
             if (token == "+")
                 myStack.push(first + second);
             if (token == "-")
-                myStack.push(first - second);
+                myStack.push(second - first);
             if (token == "*")
                 myStack.push(first * second);
-            if (token == "/" && second != 0)
-                myStack.push(first / second);
+            if (token == "/" && first != 0)
+                myStack.push(second / first);
         }
+        else
+            throw std::runtime_error("Error");
     }
     if (!myStack.size())
         throw std::runtime_error("Error");
