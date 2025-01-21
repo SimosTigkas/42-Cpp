@@ -41,7 +41,7 @@ RPN &RPN::operator=(const RPN &og)
 
 RPN::~RPN(void)
 {
-    // std::cout << "BitcoinExchange Destructor has been called" << std::endl;
+    // std::cout << "RPN Destructor has been called" << std::endl;
 }
 
 std::string RPN::getExpression(void)
