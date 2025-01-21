@@ -14,17 +14,28 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <vector>
+# include <deque>
+# include <string>
+# include <iostream>
+# include <iomanip>
+# include <ctime>
 
 class PmergeMe
 {
     private:
-
+        std::vector<int> myVector;
+        std::deque<int> myDeque;
     public:
         PmergeMe(void);
-        PmergeMe(const std::string& input);
+        PmergeMe(char **input);
         ~PmergeMe(void);
         PmergeMe(const PmergeMe &a_copy);
         PmergeMe &operator=(const PmergeMe &og);
+
+        void sortVector(void);
+        void printVector(void);
+        void sortDeque(void);
 };
 
 
