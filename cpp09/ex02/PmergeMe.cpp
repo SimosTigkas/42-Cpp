@@ -112,37 +112,22 @@ void PmergeMe::sortVector(int numsPerPair)
     int isOddElement = 0;
     size_t j = 4;
     size_t pairsCounter = myVector.size() / numsPerPair;
-
     if (pairsCounter < 2)
         return;
     if (pairsCounter % 2)
         isOddElement = 1;
     std::vector<int>::iterator first = myVector.begin();
     std::vector<int>::iterator last = myVector.begin() + numsPerPair * pairsCounter;
-    std::vector<int>::iterator end = last - isOddElement * numsPerPair;
     size_t step = numsPerPair * 2;
     std::vector<int>::iterator i = first;
-    while (i != end)
+    while (i != last)
     {
         std::vector<int>::iterator curr = i + numsPerPair - 1;
         std::vector<int>::iterator nextOne = i + numsPerPair * 2 - 1;
-        if (nextOne >= myVector.end())
+        if (nextOne >= myVector.end()/* - 1*/)
             break;
         if (*curr > *nextOne)
-        {
-            std::vector<int>::iterator newFirst = i - numsPerPair + 1;
-            std::vector<int>::iterator newEnd = newFirst + numsPerPair;
-            if (newFirst < myVector.begin() || newEnd > myVector.end())
-                return;
-            while (newFirst != newEnd)
-            {
-                if (newFirst + numsPerPair >= myVector.end())
-                    break;
-                std::iter_swap(newFirst, newFirst + numsPerPair);
-                newFirst++;
-            }
-
-        }
+            std::iter_swap(curr, nextOne);
         i += step;
     }
     if (static_cast<size_t>(numsPerPair * 2) > myVector.size())
@@ -171,14 +156,34 @@ void PmergeMe::sortVector(int numsPerPair)
         if (jacobsthalDiff > pend.size())
             break;
         int remaining_insertions = static_cast<int>(jacobsthalDiff);
+        std::cerr << "currJ: " << currJ << ", numsInserted: " << numsInserted << ", bound_adjustment: " << bound_adjustment << std::endl;
         std::vector<std::vector<int>::iterator>::iterator pend_iterator = pend.begin() + jacobsthalDiff - 1;
-        std::vector<std::vector<int>::iterator>::iterator bound_iterator = main.begin() + currJ + numsInserted;
+        std::vector<std::vector<int>::iterator>::iterator bound_iterator = main.begin() + currJ + numsInserted - bound_adjustment;
+        if (bound_iterator != main.end()) {
+            std::cerr << "bound_iterator is valid, pointing to: " << **bound_iterator << std::endl;
+        } else {
+            std::cerr << "Error: bound_iterator is out of range!" << std::endl;
+        }
+
+        if (pend_iterator < pend.begin() || pend_iterator >= pend.end()) {
+            std::cerr << "Error: pend_iterator is out of range!" << std::endl;
+            break;
+        }
         while (remaining_insertions)
         {
             std::vector<std::vector<int>::iterator>::iterator index = BinarySearchV(main.begin(), bound_iterator, *pend_iterator);
-            if (index >= main.end())
-                index = main.end();
+            if (index < main.begin() || index >= main.end()) {
+                std::cerr << "Error: index is out of range!" << std::endl;
+                break;
+            }
+            else {
+                std::cerr << "Inserting at position: " << **index << std::endl;
+            }
             std::vector<std::vector<int>::iterator>::iterator insertionPosition = main.insert(index, *pend_iterator);
+            if (insertionPosition < main.begin() || insertionPosition >= main.end()) {
+                std::cerr << "Error: insertionPosition is out of valid range!" << std::endl;
+                break;
+            }
             remaining_insertions--;
             pend_iterator = pend.erase(pend_iterator);
             pend_iterator--;
@@ -197,8 +202,10 @@ void PmergeMe::sortVector(int numsPerPair)
         std::vector<std::vector<int>::iterator>::iterator pend_element = pend.begin() + k;
         std::vector<std::vector<int>::iterator>::iterator main_bound = main.begin() + main.size() - pend.size() + k;
         std::vector<std::vector<int>::iterator>::iterator index = BinarySearchV(main.begin(), main_bound, *pend_element);
-        if (index >= main.end())
-            index = main.end();
+        if (index < main.begin() || index > main.end()) {
+                std::cerr << "Error: index is out of range!" << std::endl;
+                break;
+            }
         main.insert(index, *pend_element);
     }
     std::vector<int> temp;
@@ -206,6 +213,8 @@ void PmergeMe::sortVector(int numsPerPair)
     std::vector<std::vector<int>::iterator>::iterator iter = main.begin();
     while (iter != main.end())
     {
+        if (*iter < myVector.begin() + (numsPerPair - 1) || *iter >= myVector.end())
+            continue;
         std::vector<int>::iterator group_start = *iter - (numsPerPair - 1);
         for (int k = 0; k < numsPerPair; k++)
         {
