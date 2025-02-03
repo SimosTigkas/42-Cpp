@@ -17,9 +17,13 @@
 # include <vector>
 # include <deque>
 # include <string>
-# include <iostream>
 # include <iomanip>
 # include <ctime>
+# include <climits>
+# include <cstdlib>
+# include <cctype>
+# include <cmath>
+# include <algorithm>
 
 class PmergeMe
 {
@@ -28,17 +32,21 @@ class PmergeMe
         std::deque<int> myDeque;
     public:
         PmergeMe(void);
-        PmergeMe(char **input);
+        PmergeMe(int ac, char **input);
         ~PmergeMe(void);
         PmergeMe(const PmergeMe &a_copy);
         PmergeMe &operator=(const PmergeMe &og);
 
-        void sortVector(void);
+        void sortVector(int numsPerPair);
         void printVector(void);
-        void sortDeque(void);
+        std::vector<std::vector<int>::iterator>::iterator BinarySearchV(std::vector<std::vector<int>::iterator>::iterator begin, std::vector<std::vector<int>::iterator>::iterator end, std::vector<int>::iterator target);
+        void sortDeque(int numsPerPair);
+        std::deque<std::deque<int>::iterator>::iterator BinarySearchD(std::deque<std::deque<int>::iterator>::iterator begin, std::deque<std::deque<int>::iterator>::iterator end, std::deque<int>::iterator target);
+        bool vectorIsSorted(void) const;
+        bool dequeIsSorted(void) const;
 };
 
-
+long jacobsthal_num(long n);
 
 
 
