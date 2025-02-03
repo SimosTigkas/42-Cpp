@@ -26,7 +26,6 @@ PmergeMe::PmergeMe(int size, char **input)
         myVector.push_back(atoi(*input));
         input++;
     }
-
     input -= (size - 1);
     int i = 0;
     while (i < size - 1)
@@ -137,9 +136,12 @@ void PmergeMe::sortVector(int numsPerPair)
                 return;
             while (newFirst != newEnd)
             {
+                if (newFirst + numsPerPair >= myVector.end())
+                    break;
                 std::iter_swap(newFirst, newFirst + numsPerPair);
                 newFirst++;
             }
+
         }
         i += step;
     }
@@ -214,115 +216,115 @@ void PmergeMe::sortVector(int numsPerPair)
     std::copy(temp.begin(), temp.end(), myVector.begin());
 }
 
-void PmergeMe::sortDeque(int numsPerPair)
-{
-    int isOddElement = 0;
-    int j = 4;
-    int pairsCounter = myDeque.size() / numsPerPair;
-    if (pairsCounter < 2)
-        return;
-    if (pairsCounter % 2)
-        isOddElement = 1;
-    std::deque<int>::iterator first = myDeque.begin();
-    std::deque<int>::iterator last = myDeque.begin();
-    std::advance(last, numsPerPair * pairsCounter);
-    std::deque<int>::iterator end = last;
-    if (isOddElement)
-        std::advance(end, -numsPerPair);
-    int step = numsPerPair * 2;
-    std::deque<int>::iterator i = first;
-    while (i != end)
-    {
-        std::deque<int>::iterator curr = i;
-        std::advance(curr, numsPerPair - 1);
-        std::deque<int>::iterator nextOne = i;
-        std::advance(nextOne, numsPerPair * 2 - 1);
-        if (*curr > *nextOne)
-        {
-            std::deque<int>::iterator newFirst = i;
-            std::advance(newFirst, -numsPerPair + 1);
-            std::deque<int>::iterator newEnd = newFirst;
-            std::advance(newEnd, numsPerPair);
-            while (newFirst != newEnd)
-            {
-                std::iter_swap(newFirst, newFirst + numsPerPair);
-                std::advance(newFirst, 1);
-            }
-        }
-        std::advance(i, step);
-    }
-    sortDeque(numsPerPair * 2);
-    std::deque<std::deque<int>::iterator> main;
-    std::deque<std::deque<int>::iterator> pend;
-    main.push_back(myDeque.begin() + numsPerPair - 1);
-    main.push_back(myDeque.begin() + numsPerPair * 2 - 1);
-    while (j <= pairsCounter)
-    {
-        std::deque<int>::iterator pendElement = myDeque.begin() + numsPerPair * (j - 1) - 1;
-        pend.push_back(pendElement);
-        main.push_back(myDeque.begin() + numsPerPair * j - 1);
-        j += 2;
-    }
-    int prevJ = jacobsthal_num(1);
-    int numsInserted = 0;
-    int n = 2;
-    while (true)
-    {
-        int currJ = jacobsthal_num(n);
-        size_t jacobsthalDiff = currJ - prevJ;
-        int bound_adjustment = 0;
-        if (jacobsthalDiff > pend.size())
-            break;
-        int remaining_insertions = static_cast<int>(jacobsthalDiff);
-        std::deque<std::deque<int>::iterator>::iterator pendIterator = pend.begin() + jacobsthalDiff - 1;
-        std::deque<std::deque<int>::iterator>::iterator boundIterator = main.begin() + currJ + numsInserted;
-        while (remaining_insertions)
-        {
-            std::deque<std::deque<int>::iterator>::iterator index = BinarySearchD(main.begin(), boundIterator, *pendIterator);
-            std::deque<std::deque<int>::iterator>::iterator insertionPosition = main.insert(index, *pendIterator);
-            remaining_insertions--;
-            pendIterator = pend.erase(pendIterator);
-            std::advance(pendIterator, -1);
-            if (insertionPosition - main.begin() == currJ + numsInserted)
-                bound_adjustment++;
+// void PmergeMe::sortDeque(int numsPerPair)
+// {
+//     int isOddElement = 0;
+//     int j = 4;
+//     int pairsCounter = myDeque.size() / numsPerPair;
+//     if (pairsCounter < 2)
+//         return;
+//     if (pairsCounter % 2)
+//         isOddElement = 1;
+//     std::deque<int>::iterator first = myDeque.begin();
+//     std::deque<int>::iterator last = myDeque.begin();
+//     std::advance(last, numsPerPair * pairsCounter);
+//     std::deque<int>::iterator end = last;
+//     if (isOddElement)
+//         std::advance(end, -numsPerPair);
+//     int step = numsPerPair * 2;
+//     std::deque<int>::iterator i = first;
+//     while (i != end)
+//     {
+//         std::deque<int>::iterator curr = i;
+//         std::advance(curr, numsPerPair - 1);
+//         std::deque<int>::iterator nextOne = i;
+//         std::advance(nextOne, numsPerPair * 2 - 1);
+//         if (*curr > *nextOne)
+//         {
+//             std::deque<int>::iterator newFirst = i;
+//             std::advance(newFirst, -numsPerPair + 1);
+//             std::deque<int>::iterator newEnd = newFirst;
+//             std::advance(newEnd, numsPerPair);
+//             while (newFirst != newEnd)
+//             {
+//                 std::iter_swap(newFirst, newFirst + numsPerPair);
+//                 std::advance(newFirst, 1);
+//             }
+//         }
+//         std::advance(i, step);
+//     }
+//     sortDeque(numsPerPair * 2);
+//     std::deque<std::deque<int>::iterator> main;
+//     std::deque<std::deque<int>::iterator> pend;
+//     main.push_back(myDeque.begin() + numsPerPair - 1);
+//     main.push_back(myDeque.begin() + numsPerPair * 2 - 1);
+//     while (j <= pairsCounter)
+//     {
+//         std::deque<int>::iterator pendElement = myDeque.begin() + numsPerPair * (j - 1) - 1;
+//         pend.push_back(pendElement);
+//         main.push_back(myDeque.begin() + numsPerPair * j - 1);
+//         j += 2;
+//     }
+//     int prevJ = jacobsthal_num(1);
+//     int numsInserted = 0;
+//     int n = 2;
+//     while (true)
+//     {
+//         int currJ = jacobsthal_num(n);
+//         size_t jacobsthalDiff = currJ - prevJ;
+//         int bound_adjustment = 0;
+//         if (jacobsthalDiff > pend.size())
+//             break;
+//         int remaining_insertions = static_cast<int>(jacobsthalDiff);
+//         std::deque<std::deque<int>::iterator>::iterator pendIterator = pend.begin() + jacobsthalDiff - 1;
+//         std::deque<std::deque<int>::iterator>::iterator boundIterator = main.begin() + currJ + numsInserted;
+//         while (remaining_insertions)
+//         {
+//             std::deque<std::deque<int>::iterator>::iterator index = BinarySearchD(main.begin(), boundIterator, *pendIterator);
+//             std::deque<std::deque<int>::iterator>::iterator insertionPosition = main.insert(index, *pendIterator);
+//             remaining_insertions--;
+//             pendIterator = pend.erase(pendIterator);
+//             std::advance(pendIterator, -1);
+//             if (insertionPosition - main.begin() == currJ + numsInserted)
+//                 bound_adjustment++;
 
-            boundIterator = main.begin() + currJ + numsInserted - bound_adjustment;
-        }
-        prevJ = currJ;
-        numsInserted += jacobsthalDiff;
-        if (bound_adjustment != 0)
-            bound_adjustment = 0;
-        n++;
-    }
-    size_t k = 0;
-    while (k < pend.size())
-    {
-        std::deque<std::deque<int>::iterator>::iterator pendElement = pend.begin() + k;
-        std::deque<std::deque<int>::iterator>::iterator mainBound = main.begin() + main.size() - pend.size() + k;
-        std::deque<std::deque<int>::iterator>::iterator index = BinarySearchD(main.begin(), mainBound, *pendElement);
-        main.insert(index, *pendElement);
-        k++;
-    }
-    if (isOddElement == 1)
-    {
-        std::deque<int>::iterator oddPair = end;
-        std::advance(oddPair, numsPerPair - 1);
-        std::deque<std::deque<int>::iterator>::iterator index = BinarySearchD(main.begin(), main.end(), oddPair);
-        main.insert(index, oddPair);
-    }
-    std::deque<int> temp;
-    std::deque<std::deque<int>::iterator>::iterator mainIter = main.begin();
-    while (mainIter != main.end())
-    {
-        std::deque<int>::iterator groupStart = *mainIter;
-        for (int k = 0; k < numsPerPair; k++)
-        {
-            temp.push_back(*(groupStart + k));
-        }
-        std::advance(mainIter, 1);
-    }
-    std::copy(temp.begin(), temp.end(), myDeque.begin());
-}
+//             boundIterator = main.begin() + currJ + numsInserted - bound_adjustment;
+//         }
+//         prevJ = currJ;
+//         numsInserted += jacobsthalDiff;
+//         if (bound_adjustment != 0)
+//             bound_adjustment = 0;
+//         n++;
+//     }
+//     size_t k = 0;
+//     while (k < pend.size())
+//     {
+//         std::deque<std::deque<int>::iterator>::iterator pendElement = pend.begin() + k;
+//         std::deque<std::deque<int>::iterator>::iterator mainBound = main.begin() + main.size() - pend.size() + k;
+//         std::deque<std::deque<int>::iterator>::iterator index = BinarySearchD(main.begin(), mainBound, *pendElement);
+//         main.insert(index, *pendElement);
+//         k++;
+//     }
+//     if (isOddElement == 1)
+//     {
+//         std::deque<int>::iterator oddPair = end;
+//         std::advance(oddPair, numsPerPair - 1);
+//         std::deque<std::deque<int>::iterator>::iterator index = BinarySearchD(main.begin(), main.end(), oddPair);
+//         main.insert(index, oddPair);
+//     }
+//     std::deque<int> temp;
+//     std::deque<std::deque<int>::iterator>::iterator mainIter = main.begin();
+//     while (mainIter != main.end())
+//     {
+//         std::deque<int>::iterator groupStart = *mainIter;
+//         for (int k = 0; k < numsPerPair; k++)
+//         {
+//             temp.push_back(*(groupStart + k));
+//         }
+//         std::advance(mainIter, 1);
+//     }
+//     std::copy(temp.begin(), temp.end(), myDeque.begin());
+// }
 
 bool PmergeMe::vectorIsSorted(void) const
 {
