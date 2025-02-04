@@ -26,11 +26,9 @@ void ft_print(T sth)
 }
 
 template <typename T>
-void iter(T *arr, size_t len, void (*f)(T))
+void iter(T *arr, size_t len, void (*f)(T&))
 {
     size_t i = 0;
-    if (len > sizeof(arr) || len < 1)
-        return ;
     while (i < len)
     {
         f(arr[i]);

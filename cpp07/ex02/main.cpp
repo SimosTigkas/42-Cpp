@@ -12,78 +12,6 @@
 
 #include "Array.hpp"
 
-template <typename T>
-Array<T>::Array(void)
-{
-    this->arr = nullptr;
-    this->ssize = 0;
-}
-
-template <typename T>
-Array<T>::Array(unsigned int n)
-{
-    arr = new T[n]();
-    ssize = n;
-}
-
-template <typename T>
-Array<T>::~Array(void)
-{
-    delete[] arr;
-}
-
-template <typename T>
-Array<T>::Array(Array const &a_copy)
-{
-    unsigned int i=0;
-    ssize = a_copy.ssize;
-    arr = new T[ssize];
-    while (i < ssize)
-    {
-        arr[i] = a_copy.arr[i];
-        i++;
-    }
-}
-
-template <typename T>
-Array<T> &Array<T>::operator=(const Array &og)
-{
-    if (this != &og)
-    {
-        unsigned int i=0;
-        ssize = og.ssize;
-        arr = new T[ssize];
-        while (i < ssize)
-        {
-            arr[i] = og.arr[i];
-            i++;
-        }
-        return (*this);
-    }
-    return (*this);
-}
-
-template <typename T>
-const char *Array<T>::AccessFailed::what() const throw()
-{
-    const char *error = "You cannot access this array at this index.";
-    return error;
-}
-
-template <typename T>
-T &Array<T>::operator[](const unsigned int i) const
-{
-    if (i >= ssize || i > INT_MAX)
-        throw AccessFailed();
-    return *(arr + i);
-}
-
-template <typename T>
-unsigned int Array<T>::size(void) const
-{
-    return ssize;
-}
-
 int main(void)
 {
     Array<int> ints(5);
@@ -110,11 +38,29 @@ int main(void)
     catch (std::exception &e) {
         std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;    
     }
-    std::cout << "ints[0]= " << ints[0] << std::endl;
-    std::cout << "ints[1]= " << ints[1] << std::endl;
-    std::cout << "ints[2]= " << ints[2] << std::endl;
-    std::cout << "ints[3]= " << ints[3] << std::endl;
-    std::cout << "ints[4]= " << ints[4] << std::endl;
+    try {
+        std::cout << "ints[0]= " << ints[0] << std::endl;
+        std::cout << "ints[1]= " << ints[1] << std::endl;
+        std::cout << "ints[2]= " << ints[2] << std::endl;
+        std::cout << "ints[3]= " << ints[3] << std::endl;
+        std::cout << "ints[4]= " << ints[4] << std::endl;
+        std::cout << "The size of ints() is: " << ints.size() <<std::endl;
 
-    std::cout << "The size of ints() is: " << ints.size() <<std::endl;
+        Array<int> a(5);
+        a[0] = 1;
+        a[1] = 2;
+        a[2] = 3;
+        a[3] = 4;
+        a[4] = 5;
+
+        Array<int> b(3);
+        b[0] = 5;
+        b[1] = 6;
+        b[2] = 7;
+        b[0] = a[4];
+        std::cout << "b[0]: " << b[3] <<std::endl;
+    }
+    catch(std::exception &e) {
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+    }
 }
