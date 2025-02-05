@@ -37,8 +37,12 @@ class PmergeMe
         PmergeMe(const PmergeMe &a_copy);
         PmergeMe &operator=(const PmergeMe &og);
 
-        void sortVector(size_t numsPerPair);
+        void sortVector(void);
         void printVector(void);
+        std::vector<std::vector<int>::iterator>::iterator BinarySearchIteratorsV(
+    std::vector<std::vector<int>::iterator>::iterator begin,
+    std::vector<std::vector<int>::iterator>::iterator end,
+    std::vector<int>::iterator target);
         std::vector<int>::iterator BinarySearchV(
     std::vector<int>::iterator begin,
     std::vector<int>::iterator end,
@@ -49,8 +53,9 @@ class PmergeMe
         bool dequeIsSorted(void) const;
 };
 
+bool parseInput(int ac, char **av);
 long jacobsthal_num(long n);
 bool compareIterators(std::deque<int>::iterator a, std::deque<int>::iterator b);
-
+bool compareIters(std::vector<int>::iterator a, std::vector<int>::iterator b);
 
 #endif

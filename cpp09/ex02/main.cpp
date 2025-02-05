@@ -12,7 +12,7 @@
 
 #include "PmergeMe.hpp"
 
-static bool parseInput(int ac, char **av)
+bool parseInput(int ac, char **av)
 {
     int i = 1;
     while (i < ac)
@@ -52,22 +52,21 @@ int main(int ac, char **av)
         PmergeMe setOfNums(ac, av);
         std::cout << "Before: ";
         setOfNums.printVector();
-        // clock_t beginningV = clock();
-        // setOfNums.sortVector(1);
-        // clock_t endV = clock();
+        clock_t beginningV = clock();
+        setOfNums.sortVector();
+        clock_t endV = clock();
         clock_t beginningD = clock();
         setOfNums.sortDeque();
         clock_t endD = clock();
         std::cout << "After: ";
         setOfNums.printVector();
-        if (!setOfNums.dequeIsSorted())
+        if (!setOfNums.vectorIsSorted())
             throw std::runtime_error("Sorting did not work");
-        // std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << std::fixed << std::setprecision(6) << static_cast<double>(endV - beginningV) / CLOCKS_PER_SEC << " us"<<std::endl; 
+        std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << std::fixed << std::setprecision(6) << static_cast<double>(endV - beginningV) / CLOCKS_PER_SEC << " us"<<std::endl; 
 	    std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " <<  std::fixed << std::setprecision(6) << static_cast<double>(endD - beginningD) / CLOCKS_PER_SEC  << std::endl; 
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
-    
 }

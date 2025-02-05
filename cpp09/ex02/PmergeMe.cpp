@@ -60,8 +60,8 @@ PmergeMe::~PmergeMe(void)
 
 void PmergeMe::printVector(void)
 {
-    std::deque<int>::const_iterator it = myDeque.begin();
-    while (it != myDeque.end())
+    std::vector<int>::const_iterator it = myVector.begin();
+    while (it != myVector.end())
     {
         std::cout << *it << " ";
         it++;
@@ -91,91 +91,117 @@ long jacobsthal_num(long n)
     return ((1 << (n + 1)) + ((n % 2 == 0) ? 1 : -1)) / 3;
 }
 
-// std::vector<int>::iterator PmergeMe::BinarySearchV(
-//     std::vector<int>::iterator begin,
-//     std::vector<int>::iterator end,
-//     int target)
-// {
-//     while (begin < end)
-//     {
-//         std::vector<int>::iterator mid = begin + (end - begin) / 2;
-//         if (target <= *mid)
-//             end = mid;
-//         else
-//             begin = mid + 1;
-//     }
-//     return begin;
-// }
+bool compareIters(std::vector<int>::iterator a, std::vector<int>::iterator b)
+{
+    return *a < *b;
+}
 
-// void PmergeMe::sortVector(size_t numsPerPair)
-// {
-//     if (myVector.size() < 2)
-//         return;
-//     size_t pairsCounter = myVector.size() / numsPerPair;
-//     if (pairsCounter < 2)
-//         return;
-//     std::vector<int>::iterator first = myVector.begin();
-//     std::vector<int>::iterator last = myVector.begin() + numsPerPair * pairsCounter;
-//     size_t step = numsPerPair * 2;
-//     std::vector<int>::iterator i = first;
-//     // **Step 1: Properly Swap Pairs**
-//     while (i + numsPerPair < last)  // Ensure no out-of-bounds access
-//     {
-//         std::vector<int>::iterator curr = i;
-//         std::vector<int>::iterator nextOne = i + numsPerPair;
 
-//         if (*curr > *nextOne)
-//             std::swap_ranges(curr, curr + numsPerPair, nextOne);  // Swap entire pair
+std::vector<std::vector<int>::iterator>::iterator PmergeMe::BinarySearchIteratorsV(
+    std::vector<std::vector<int>::iterator>::iterator begin,
+    std::vector<std::vector<int>::iterator>::iterator end,
+    std::vector<int>::iterator target)
+{
+    while (begin < end)
+    {
+        std::vector<std::vector<int>::iterator>::iterator mid = begin + (end - begin) / 2;
+        if (*target < **mid)
+            end = mid;
+        else
+            begin = mid + 1;
+    }
+    return begin;
+}
 
-//         i += step;
-//     }
-//     // **Step 2: Recursively Sort Larger Groups**
-//     if (numsPerPair * 2 <= myVector.size())
-//         sortVector(numsPerPair * 2);
-//     std::vector<int> main;
-//     std::vector<int> pend;
-//     // **Step 3: Partition Elements into Main and Pending**
-//     size_t j = 2;
-//     while (j <= pairsCounter)
-//     {
-//         pend.push_back(myVector[numsPerPair * (j - 1) - 1]);
-//         main.push_back(myVector[numsPerPair * j - 1]);
-//         j += 2;
-//     }
-//     // **Step 4: Jacobsthal Sequence Insertion**
-//     int prevJ = jacobsthal_num(1);
-//     int numsInserted = 0;
-//     int n = 2;
-//     while (true)
-//     {
-//         int currJ = jacobsthal_num(n);
-//         size_t jacobsthalDiff = currJ - prevJ;
-//         if (jacobsthalDiff > pend.size())
-//             break;
-//         std::vector<int> elementsToInsert;
-//         for (size_t k = 0; k < jacobsthalDiff; k++)
-//             elementsToInsert.push_back(pend[k]);
-//         pend.erase(pend.begin(), pend.begin() + jacobsthalDiff);
-//         for (size_t k = 0; k < elementsToInsert.size(); k++)
-//         {
-//             // Directly use BinarySearchV without finding the target
-//             std::vector<int>::iterator index = BinarySearchV(main.begin(), main.end(), elementsToInsert[k]);
-//             main.insert(index, elementsToInsert[k]);
-//         }
-//         prevJ = currJ;
-//         numsInserted += jacobsthalDiff;
-//         n++;
-//     }
-//     // **Step 5: Insert Remaining Pending Elements**
-//     for (size_t k = 0; k < pend.size(); k++)
-//     {
-//         // Directly use BinarySearchV without finding the target
-//         std::vector<int>::iterator index = BinarySearchV(main.begin(), main.end(), pend[k]);
-//         main.insert(index, pend[k]);
-//     }
-//     // **Step 6: Copy Sorted Elements Back to myVector**
-//     myVector = main;
-// }
+std::vector<int>::iterator PmergeMe::BinarySearchV(
+    std::vector<int>::iterator begin,
+    std::vector<int>::iterator end,
+    int target)
+{
+    while (begin < end)
+    {
+        std::vector<int>::iterator mid = begin + (end - begin) / 2;
+        if (target <= *mid)
+            end = mid;
+        else
+            begin = mid + 1;
+    }
+    return begin;
+}
+
+void PmergeMe::sortVector(void)
+{
+    if (myVector.size() < 2)
+        return;
+
+    std::vector<int> main;
+    std::vector<int> pend;
+    std::vector<std::vector<int>::iterator> mainIterators;
+    std::vector<std::vector<int>::iterator> pendIterators;
+
+    for (size_t i = 0; i + 1 < myVector.size(); i += 2)
+    {
+        if (myVector[i] > myVector[i + 1])
+            std::swap(myVector[i], myVector[i + 1]);
+    }
+
+    for (size_t i = 1; i < myVector.size(); i += 2)
+    {
+        main.push_back(myVector[i]);
+        mainIterators.push_back(myVector.begin() + i);
+    }
+    for (size_t i = 0; i < myVector.size(); i += 2)
+    {
+        pend.push_back(myVector[i]);
+        pendIterators.push_back(myVector.begin() + i);
+    }
+
+    std::sort(main.begin(), main.end());
+    std::sort(mainIterators.begin(), mainIterators.end(), compareIters);
+
+    std::vector<int> insertionOrder;
+    size_t jacobIndex = 1;
+    while (jacobsthal_num(jacobIndex) - 1 < static_cast<long>(pend.size()))
+    {
+        insertionOrder.push_back(jacobsthal_num(jacobIndex) - 1);
+        jacobIndex++;
+    }
+
+    for (size_t j = 0; j < insertionOrder.size(); j++)
+    {
+        size_t i = insertionOrder[j];
+        if (i < pendIterators.size())
+        {
+            std::vector<int>::iterator pos = BinarySearchV(main.begin(), main.end(), *pendIterators[i]);
+            main.insert(pos, *pendIterators[i]);
+            std::vector<std::vector<int>::iterator>::iterator iterPos = BinarySearchIteratorsV(
+                mainIterators.begin(), mainIterators.end(), pendIterators[i]);
+            mainIterators.insert(iterPos, pendIterators[i]);
+        }
+    }
+
+    for (size_t i = 0; i < pendIterators.size(); i++)
+    {
+        bool alreadyInserted = false;
+        for (size_t j = 0; j < insertionOrder.size(); j++)
+        {
+            if (insertionOrder[j] == static_cast<int>(i))
+            {
+                alreadyInserted = true;
+                break;
+            }
+        }
+        if (!alreadyInserted)
+        {
+            std::vector<int>::iterator pos = BinarySearchV(main.begin(), main.end(), *pendIterators[i]);
+            main.insert(pos, *pendIterators[i]);
+            std::vector<std::vector<int>::iterator>::iterator iterPos = BinarySearchIteratorsV(
+                mainIterators.begin(), mainIterators.end(), pendIterators[i]);
+            mainIterators.insert(iterPos, pendIterators[i]);
+        }
+    }
+    myVector.assign(main.begin(), main.end());
+}
 
 bool compareIterators(std::deque<int>::iterator a, std::deque<int>::iterator b)
 {
@@ -211,7 +237,7 @@ void PmergeMe::sortDeque(void)
     std::sort(main.begin(), main.end());
     std::sort(mainIterators.begin(), mainIterators.end(), compareIterators);
 
-    std::vector<int> insertionOrder;
+    std::deque<int> insertionOrder;
     size_t jacobIndex = 1;
     while (jacobsthal_num(jacobIndex) - 1 < static_cast<long>(pend.size()))
     {
