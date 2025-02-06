@@ -58,12 +58,12 @@ int main(int ac, char **av)
         clock_t beginningD = clock();
         setOfNums.sortDeque();
         clock_t endD = clock();
+        if (!setOfNums.vectorIsSorted() || !setOfNums.dequeIsSorted())
+            throw std::runtime_error("Sorting did not work");
         std::cout << "After: ";
         setOfNums.printVector();
-        if (!setOfNums.vectorIsSorted())
-            throw std::runtime_error("Sorting did not work");
         std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << std::fixed << std::setprecision(6) << static_cast<double>(endV - beginningV) / CLOCKS_PER_SEC << " us"<<std::endl; 
-	    std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " <<  std::fixed << std::setprecision(6) << static_cast<double>(endD - beginningD) / CLOCKS_PER_SEC  << std::endl; 
+	    std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " <<  std::fixed << std::setprecision(6) << static_cast<double>(endD - beginningD) / CLOCKS_PER_SEC << " us" <<std::endl; 
     }
     catch(const std::exception& e)
     {
