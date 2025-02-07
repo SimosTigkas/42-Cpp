@@ -53,7 +53,7 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
                 lineIsValid = true;
                 date = match_result[1].str() + "-" + match_result[2].str() + "-" + match_result[3].str();
                 value = std::stod(match_result[4]);
-                if (value < 0 || value > 10000)
+                if (value < 0.0 || value > 1000)
                     throw std::runtime_error("The value does not belong to this: [0,1000]");
                 rate = bitcoin.getRate(date);
                 std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
