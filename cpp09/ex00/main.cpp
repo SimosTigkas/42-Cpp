@@ -12,16 +12,35 @@
 
 #include "BitcoinExchange.hpp"
 
+static bool isLeapYear(int year)
+{
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+static bool dateValidityCheck(int year, int month, int day)
+{
+    const int daysInMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (month == 2 && isLeapYear(year))
+        return day <= 29;
+    return day <= daysInMonth[month - 1];
+}
+
 static void checkLine(std::string &line)
 {
     std::string date;
     std::istringstream iss(line);
     std::regex dateFormat(R"((\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))");
     iss >> date;
-    if (std::regex_match(date, dateFormat))
-        return ;
-    else
-        throw std::runtime_error("Error: wrong date input -> " + date);
+
+    if (!std::regex_match(date, dateFormat))
+        throw std::runtime_error("Error: Wrong date format -> " + date);
+    int year, month, day;
+    char dash1, dash2;
+    std::istringstream dateStream(date);
+    dateStream >> year >> dash1 >> month >> dash2 >> day;
+    if (!dateValidityCheck(year, month, day))
+        throw std::runtime_error("Error: Invalid calendar date -> " + date);
 }
 
 static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
@@ -35,7 +54,8 @@ static void checkFile(const std::string &file, const BitcoinExchange &bitcoin)
     double value;
     double rate;
 
-    if (!infile.is_open()) throw std::runtime_error("Error while trying to open the file\n");
+    if (!infile.is_open())
+        throw std::runtime_error("Error while trying to open the file\n");
     if (std::getline(infile, line))
     {
         if (line != "date | value")
