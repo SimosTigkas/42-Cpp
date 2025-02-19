@@ -89,7 +89,7 @@ int RPN::calculateExpression(const std::string &input)
                 myStack.push(second / first);
         }
         else
-            throw std::runtime_error("Error");
+            throw std::runtime_error("Error: Wrong token.");
     }
     if (!myStack.size())
         throw std::runtime_error("Error");
