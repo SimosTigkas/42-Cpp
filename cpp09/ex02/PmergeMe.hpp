@@ -39,14 +39,8 @@ class PmergeMe
 
         void sortVector(void);
         void printVector(void);
-        std::vector<std::vector<int>::iterator>::iterator BinarySearchIteratorsV(
-    std::vector<std::vector<int>::iterator>::iterator begin,
-    std::vector<std::vector<int>::iterator>::iterator end,
-    std::vector<int>::iterator target);
-        std::vector<int>::iterator BinarySearchV(
-    std::vector<int>::iterator begin,
-    std::vector<int>::iterator end,
-    int target);
+        std::vector<std::vector<int>::iterator>::iterator BinarySearchIteratorsV(std::vector<std::vector<int>::iterator>::iterator begin, std::vector<std::vector<int>::iterator>::iterator end, std::vector<int>::iterator target);
+        std::vector<int>::iterator BinarySearchV(std::vector<int>::iterator begin, std::vector<int>::iterator end, int target);
         void sortDeque(void);
         std::deque<std::deque<int>::iterator>::iterator BinarySearchD(std::deque<std::deque<int>::iterator>::iterator begin, std::deque<std::deque<int>::iterator>::iterator end, std::deque<int>::iterator target);
         bool vectorIsSorted(void) const;

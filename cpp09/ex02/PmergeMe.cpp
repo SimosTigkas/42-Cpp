@@ -69,7 +69,6 @@ void PmergeMe::printVector(void)
     std::cout << std::endl;
 }
 
-
 std::deque<std::deque<int>::iterator>::iterator PmergeMe::BinarySearchD(
     std::deque<std::deque<int>::iterator>::iterator begin,
     std::deque<std::deque<int>::iterator>::iterator end,
@@ -95,7 +94,6 @@ bool compareIters(std::vector<int>::iterator a, std::vector<int>::iterator b)
 {
     return *a < *b;
 }
-
 
 std::vector<std::vector<int>::iterator>::iterator PmergeMe::BinarySearchIteratorsV(
     std::vector<std::vector<int>::iterator>::iterator begin,
@@ -279,9 +277,6 @@ void PmergeMe::sortDeque(void)
     }
     myDeque.assign(sortedDeque.begin(), sortedDeque.end());
 }
-
-
-
 
 bool PmergeMe::vectorIsSorted(void) const
 {

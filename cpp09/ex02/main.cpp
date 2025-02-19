@@ -35,6 +35,13 @@ bool parseInput(int ac, char **av)
     return true;
 }
 
+/*
+    You can test it with sth like:
+    ./PmergeMe 215 11 99 8 4 2 123 1 22 21 9 9 9 9
+    or sth like this:
+    shuf -i 1-1000 -n 3001 | tr "\n" " " | xargs ./PmergeMe
+*/
+
 int main(int ac, char **av)
 {
     if (ac < 2)
@@ -42,13 +49,13 @@ int main(int ac, char **av)
         std::cout << "Try this: ./PmergeMe nbr1 nbr2 nbr3..." << std::endl;
         return (1);
     }
-    if (!parseInput(ac, av))
-    {
-        std::cout << "The input is invalid" <<std::endl;
-        return (2);
-    }
     try
     {
+        if (!parseInput(ac, av))
+        {
+            std::cout << "The input is invalid" <<std::endl;
+            return (2);
+        }
         PmergeMe setOfNums(ac, av);
         std::cout << "Before: ";
         setOfNums.printVector();
